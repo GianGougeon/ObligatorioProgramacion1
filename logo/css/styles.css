@@ -1,0 +1,131 @@
+@charset "UTF-8";
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.logo-cuadrado {
+  background: #191c29;
+  height: 5.4rem;
+  width: 5rem;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(88, 199, 250, 0);
+  cursor: default;
+}
+.logo-cuadrado::before {
+  content: "";
+  width: 110%;
+  height: 110%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), #ffa7be, #ffc069 25%, #c411e2 75%, #615aca);
+  position: absolute;
+  z-index: -1;
+  top: -5%;
+  left: -5%;
+  animation: spin 2.5s linear infinite;
+}
+.logo-cuadrado::after {
+  position: absolute;
+  content: "";
+  top: 0.9rem;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(0.9rem);
+  background-image: linear-gradient(var(--rotate), #ffa7be, #ffc069 25%, #c411e2 75%, #615aca);
+  opacity: 1;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+/* Logo */
+.logo-centro {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.logo-centro > div {
+  width: 2.7rem;
+}
+.logo-centro > div > svg {
+  color: white;
+  position: relative;
+  --color-top: #fd5c3b;
+  --color-bottom: #ce0030;
+}
+
+.logo-centro2 {
+  position: absolute;
+  top: 47.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  z-index: 11;
+  font-family: sans-serif;
+  color: white;
+  pointer-events: none;
+  padding-top: 3rem;
+}
+.logo-centro2 p:nth-child(1) {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.logo-centro2 p:nth-child(1) > span:nth-child(1) {
+  padding-right: 2.2rem;
+  padding-left: 0.1rem;
+}
+.logo-centro2 p:nth-child(1) > span:nth-child(2)::after {
+  vertical-align: super;
+  font-size: 0.6rem;
+  content: "™";
+}
+.logo-centro2 p:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0;
+  margin-top: -30;
+}
+.logo-centro2 p:nth-child(2) > span {
+  color: #32bffd;
+}
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */
