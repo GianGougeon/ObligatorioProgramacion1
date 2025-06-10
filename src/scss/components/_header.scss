@@ -1,0 +1,31 @@
+header {
+    background-color: #201f21;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    > div {
+        display: flex;
+        > ul {
+            display: flex;
+            width: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            > li {
+                > a {
+                    color: aliceblue;
+                }
+                &:hover {
+                    border-bottom: 2px solid red;
+                }
+            }
+        }
+    }
+    .header-login {
+        > li {
+            display: flex;
+        }
+    }
+}

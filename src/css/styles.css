@@ -1,3 +1,333 @@
-/* Archivo principal de estilos */
+@charset "UTF-8";
+/* scss/reset.scss */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+  background-color: #201f21;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+header > div {
+  display: flex;
+}
+header > div > ul {
+  display: flex;
+  width: 100vh;
+  justify-content: space-between;
+  align-items: center;
+}
+header > div > ul > li > a {
+  color: aliceblue;
+}
+header > div > ul > li:hover {
+  border-bottom: 2px solid red;
+}
+header .header-login > li {
+  display: flex;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+.logo-cuadrado {
+  background: #191c29;
+  height: 2.7rem;
+  width: 2.5rem;
+  padding: 1.5px;
+  position: relative;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(88, 199, 250, 0);
+  cursor: default;
+}
+.logo-cuadrado::before {
+  content: "";
+  width: calc(100% + 5%);
+  height: calc(100% + 5%);
+  border-radius: 4px;
+  background-image: linear-gradient(var(--rotate), #ffa7be, #ffc069 25%, #c411e2 75%, #615aca);
+  position: absolute;
+  z-index: -1;
+  top: calc(-1 * 5% / 2);
+  left: calc(-1 * 5% / 2);
+  animation: spin 2.5s linear infinite;
+}
+.logo-cuadrado::after {
+  position: absolute;
+  content: "";
+  top: 0.45rem;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(0.45rem);
+  background-image: linear-gradient(var(--rotate), #ffa7be, #ffc069 25%, #c411e2 75%, #615aca);
+  opacity: 1;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+.logo-centro {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.logo-centro > div {
+  width: 1.35rem;
+}
+.logo-centro > div > svg {
+  color: white;
+  position: relative;
+  --color-top: #fd5c3b;
+  --color-bottom: #ce0030;
+}
+
+.logo-centro2 {
+  position: absolute;
+  top: 47.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  z-index: 11;
+  font-family: sans-serif;
+  color: white;
+  pointer-events: none;
+  padding-top: 1.5rem;
+}
+.logo-centro2 p:nth-child(1) {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.45rem;
+}
+.logo-centro2 p:nth-child(1) > span:nth-child(1) {
+  padding-right: 1.1rem;
+  padding-left: 0.05rem;
+}
+.logo-centro2 p:nth-child(1) > span:nth-child(2)::after {
+  vertical-align: super;
+  font-size: 0.3rem;
+  content: "™";
+}
+.logo-centro2 p:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin: 0;
+  margin-top: -15px;
+}
+.logo-centro2 p:nth-child(2) > span {
+  color: #32bffd;
+}
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.buscador {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+}
+.buscador > input {
+  width: 90vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.tarjetas {
+  display: flex;
+}
+.tarjetas > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+  max-width: 90%;
+  margin: auto;
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+.tarjetas > div > div {
+  position: relative;
+}
+.tarjetas > div > div > div {
+  position: absolute;
+  top: 90%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  background-color: blue;
+}
+.tarjetas > div > div > div > p {
+  text-transform: uppercase;
+}
+.tarjetas > div > div > img {
+  height: 500px;
+  position: relative;
+}
+.tarjetas > div > div > img::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgb(0, 0, 0) 100%);
+  pointer-events: none; /* para que no interfiera con clics */
+}
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,37 @@
+.tarjetas {
+    display: flex;
+    > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 16px;
+        max-width: 90%;
+        margin: auto;
+        padding-top: 20px;
+        margin-bottom: 40px;
+        > div {
+            position: relative;
+            > div {
+                position: absolute;
+                top: 90%;
+                left: 15%;
+                transform: translate(-50%, -50%);
+                color: aliceblue;
+                background-color: blue;
+                > p {
+                    text-transform: uppercase;
+                }
+            }
+            > img {
+                height: 500px;
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%);
+                    pointer-events: none; /* para que no interfiera con clics */
+                }
+            }
+        }
+    }
+}

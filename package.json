@@ -7,6 +7,7 @@
         "dev": "sass --watch src/scss/main.scss:src/css/styles.css",
         "logo": "sass --watch logo/scss/main.scss:logo/css/styles.css"
     },
-    "dependencies": {},
-    "devDependencies": {}
+    "dependencies": {
+        "sass": "^1.89.2"
+    }
 }

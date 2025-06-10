@@ -1,0 +1,15 @@
+.buscador {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    > input {
+        width: 90vw;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+}

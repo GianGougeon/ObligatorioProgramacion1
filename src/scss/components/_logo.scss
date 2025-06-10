@@ -1,0 +1,160 @@
+$logo-scale: 0.5; // Cambia este valor a 0.8, 0.6, etc. para reducir el tamaño
+
+$color-bg-body: #212534;
+$color-card-bg: #191c29;
+$color-text-hover: rgb(88 199 250 / 100%);
+
+$color-logo-gradient-1: #ffa7be;
+$color-logo-gradient-2: #ffc069;
+$color-logo-gradient-3: #c411e2;
+$color-logo-gradient-4: #615aca;
+
+$logo-original-height: 5.4rem * $logo-scale;
+$logo-original-width: 5rem * $logo-scale;
+$logo-svg-width: 2.7rem * $logo-scale;
+$logo-text-blue: #32bffd;
+$logo-text-color: white;
+$border-grow-percentage: 10% * $logo-scale;
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.logo-cuadrado {
+  background: $color-card-bg;
+  height: $logo-original-height;
+  width: $logo-original-width;
+  padding: calc(3px * $logo-scale);
+  position: relative;
+  border-radius: calc(6px * $logo-scale);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(88 199 250 / 0%);
+  cursor: default;
+
+  &::before {
+    content: "";
+    width: calc(100% + #{$border-grow-percentage});
+    height: calc(100% + #{$border-grow-percentage});
+    border-radius: calc(8px * $logo-scale);
+    background-image: linear-gradient(
+      var(--rotate),
+      $color-logo-gradient-1,
+      $color-logo-gradient-2 25%,
+      $color-logo-gradient-3 75%,
+      $color-logo-gradient-4
+    );
+    position: absolute;
+    z-index: -1;
+    top: calc(-1 * (#{$border-grow-percentage} / 2));
+    left: calc(-1 * (#{$border-grow-percentage} / 2));
+    animation: spin 2.5s linear infinite;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc($logo-original-height / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc($logo-original-height / 6));
+    background-image: linear-gradient(
+      var(--rotate),
+      $color-logo-gradient-1,
+      $color-logo-gradient-2 25%,
+      $color-logo-gradient-3 75%,
+      $color-logo-gradient-4
+    );
+    opacity: 1;
+    animation: spin 2.5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.logo-centro {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  > div {
+    width: $logo-svg-width;
+
+    > svg {
+      color: $logo-text-color;
+      position: relative;
+      --color-top: #fd5c3b;
+      --color-bottom: #ce0030;
+    }
+  }
+}
+
+.logo-centro2 {
+  position: absolute;
+  top: 47.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  z-index: 11;
+  font-family: sans-serif;
+  color: $logo-text-color;
+  pointer-events: none;
+  padding-top: calc(3rem * $logo-scale);
+
+  p:nth-child(1) {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: calc(0.9rem * $logo-scale);
+
+    > span:nth-child(1) {
+      padding-right: calc(2.2rem * $logo-scale);
+      padding-left: calc(0.1rem * $logo-scale);
+    }
+
+    > span:nth-child(2) {
+      &::after {
+        vertical-align: super;
+        font-size: calc(0.6rem * $logo-scale);
+        content: "™";
+      }
+    }
+  }
+
+  p:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    font-size: calc(1.8rem * $logo-scale);
+    margin: 0;
+    margin-top: calc(-30px * $logo-scale);
+
+    > span {
+      color: $logo-text-blue;
+    }
+  }
+}
+
+a {
+  color: $color-bg-body;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: calc(2rem * $logo-scale);
+}
