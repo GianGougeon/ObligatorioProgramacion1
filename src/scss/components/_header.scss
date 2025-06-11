@@ -6,8 +6,12 @@ header {
     justify-content: center;
     justify-content: space-between;
     text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     > div {
         display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 1rem;
         > ul {
             display: flex;
             width: 100vh;
@@ -17,15 +21,15 @@ header {
                 > a {
                     color: aliceblue;
                 }
-                &:hover {
-                    border-bottom: 2px solid red;
-                }
             }
         }
     }
     .header-login {
         > li {
             display: flex;
+            a {
+                color: aliceblue;
+            }
         }
     }
 }

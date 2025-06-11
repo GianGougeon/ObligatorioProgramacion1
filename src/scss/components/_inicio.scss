@@ -1,0 +1,28 @@
+.inicio {
+    height: 70vh;
+    padding: 5rem;
+    font-family: sans-serif;
+    background-image: linear-gradient(#201f21, #615aca);
+    h1 {
+        font-size: 3rem;
+        color: aliceblue;
+        padding: 1rem 0;
+        font-family: "Montserrat", "Oswald", "Anton", sans-serif; /* Prueba con fuentes similares, busca en Google Fonts */
+        text-transform: uppercase;
+    }
+    > div {
+        div {
+            // width: 100vh;
+        }
+    }
+    div:nth-child(2) {
+        span {
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            font-size: 2rem;
+            color: aliceblue;
+            white-space: nowrap;
+        }
+    }
+}
