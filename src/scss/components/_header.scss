@@ -1,12 +1,14 @@
-header {
-    background-color: #201f21;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    justify-content: space-between;
-    text-transform: uppercase;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+  header {
+  background-color: #201f21;
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  text-transform: uppercase;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  padding: 1rem 0; 
+
     > div {
         display: flex;
         justify-content: space-between;
@@ -25,6 +27,7 @@ header {
         }
     }
     .header-login {
+        width: 100%;
         > li {
             display: flex;
             a {

@@ -3,13 +3,18 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    padding: 1rem;
+    padding: 2px;
+   background-color: #201f21;
+
     > input {
-        width: 90vw;
+        width: 150px;
+        padding: 0.3rem;
         display: flex;
         text-align: center;
         justify-content: center;
         text-align: center;
         align-items: center;
+         border-radius: 2px;
+        
     }
 }

@@ -1,0 +1,31 @@
+footer {
+    background-color: #201f21;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    padding: 1rem;
+    color: white;
+
+
+    >div:nth-child(2) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        /* Alinea a la derecha dentro de su contenedor */
+        gap: 1rem;
+    }
+
+    >div:nth-child(3) {
+       display: flex;
+        flex-direction: column;
+        a {
+            color: rgb(19, 59, 94);
+        }
+
+
+    }
+}
