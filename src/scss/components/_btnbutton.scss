@@ -1,8 +1,74 @@
-.btnbutton { 
-border-radius: 2px;
-border-color: black;
-padding: 2px;
-margin-left: 5px;
+.btnbutton {
+    border-radius: 2px;
+    border-color: black;
+    padding: 2px;
+    margin-left: 5px;
+}
 
+$border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+$border-width: 0.125em;
+$curve-size: 0.5em;
+$blur: 30px;
+$bg: #080312;
+$color: #afffff;
 
+.btn {
+    color: $color;
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    padding: 0.5em 1.5em;
+    font-size: 17px;
+    border: 0;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    clip-path: polygon(0% $curve-size, $curve-size 0, 100% 0, 100% calc(100% - $curve-size), calc(100% - $curve-size) 100%, 0 100%);
+    transition: color 250ms;
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    &::before {
+        background: $border-color;
+        background-size: 300% 300%;
+        animation: move-bg 5s ease infinite;
+        z-index: -2;
+    }
+
+    &::after {
+        background: $bg;
+        z-index: -1;
+        clip-path: polygon($border-width calc($curve-size + $border-width * 0.5), calc($curve-size + $border-width * 0.5) $border-width, calc(100% - $border-width) $border-width, calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width), $border-width calc(100% - $border-width));
+        transition: clip-path 500ms;
+    }
+
+    &:hover,
+    &:focus {
+        color: #fff;
+
+        &::after {
+            clip-path: polygon(calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - $border-width) $border-width, calc(100% - $border-width) $border-width, calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width));
+            transition: 200ms;
+        }
+    }
+}
+
+@keyframes move-bg {
+    0% {
+        background-position: 31% 0%;
+    }
+
+    50% {
+        background-position: 70% 100%;
+    }
+
+    100% {
+        background-position: 31% 0%;
+    }
 }
