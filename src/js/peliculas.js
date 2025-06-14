@@ -1,6 +1,7 @@
 // cargar peliculas desde localstorage con fetch
 import { Memoria } from "./models/memoria.js";
 import { data } from "./data.js";
+import { MemoriasAlquiladas } from "./models/memoriasAlquiladas.js";
 
 let peliculasGuardadas = [...data];
 
@@ -36,7 +37,7 @@ const imprimirPeliculas = (peliculas) => {
 
     tarjetasPeliculas.innerHTML = "";
 
-    peliculas.forEach(pelicula => {
+    peliculas.forEach((pelicula, index) => {
         tarjetasPeliculas.innerHTML += `
             <div class="card">
                 <img src="${pelicula.imagen}" alt="${pelicula.titulo}" />
@@ -44,10 +45,46 @@ const imprimirPeliculas = (peliculas) => {
                     <p>Genero: ${pelicula.genero}</p>
                     <p>Titulo: ${pelicula.titulo}</p>
                     <p>Clasificacion: ${pelicula.clasificacion}</p>
+                    <button class="btn" data-id="${pelicula.id}">Alquilar</button>
                 </div>
             </div>
         `;
     });
-    console.log("Películas impresas en el DOM");
-}
 
+    console.log("Películas impresas en el DOM");
+
+    const botonesAlquilar = document.querySelectorAll(".btn");
+    const memoriasAlquiladas = new MemoriasAlquiladas();
+
+    botonesAlquilar.forEach((boton) => {
+        const id = parseInt(boton.getAttribute("data-id"));
+        const pelicula = peliculas.find(p => p.id === id);
+
+        if (!pelicula) return;
+
+        // Verificar si ya estaba alquilada y actualizar botón
+        if (pelicula.alquilada) {
+            boton.textContent = "Alquilada";
+            boton.disabled = true;
+        }
+
+        boton.addEventListener("click", () => {
+            pelicula.alquilada = true;
+            pelicula.VecesAlquilada = (pelicula.VecesAlquilada || 0) + 1;
+
+            // Guardar en almacenamiento
+            const memoria = new Memoria();
+            memoria.escribir("peliculas", peliculas);
+
+            // Guardar en lista de alquiladas (si querés usarla)
+            memoriasAlquiladas.agregarMemoria(pelicula);
+
+            // Actualizar botón
+            boton.textContent = "Alquilada";
+            boton.disabled = true;
+
+            alert(`Película "${pelicula.titulo}" alquilada exitosamente!`);
+            console.log(`Película alquilada: ${pelicula.titulo}`);
+        });
+    });
+};

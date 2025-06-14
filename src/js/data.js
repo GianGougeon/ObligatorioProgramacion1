@@ -8,7 +8,8 @@ export const data = [{
     clasificacion: 9.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
-    precio: 145
+    precio: 145,
+    VecesAlquilada: 0
 },
 {
     id: 2,
@@ -20,7 +21,8 @@ export const data = [{
     clasificacion: 7.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jYfMTSiFFK7ffbY2lay4zyvTkEk.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 3,
@@ -33,6 +35,7 @@ export const data = [{
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg",
     precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 4,
@@ -44,7 +47,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    precio: 155
+    precio: 155,
+    VecesAlquilada: 0
 },
 {
     id: 5,
@@ -56,7 +60,8 @@ export const data = [{
     clasificacion: 7.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/270MrJNqJovumHXGE6SSt0zwUIF.jpg",
-    precio: 136
+    precio: 136,
+    VecesAlquilada: 0
 },
 {
     id: 6,
@@ -68,7 +73,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-    precio: 248
+    precio: 248,
+    VecesAlquilada: 0
 },
 {
     id: 7,
@@ -80,7 +86,8 @@ export const data = [{
     clasificacion: 8.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
-    precio: 215
+    precio: 215,
+    VecesAlquilada: 0
 },
 {
     id: 8,
@@ -92,7 +99,8 @@ export const data = [{
     clasificacion: 7.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8f9dnOtpArDrOMEylpSN9Sc6fuz.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 9,
@@ -104,7 +112,8 @@ export const data = [{
     clasificacion: 8.8,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 10,
@@ -116,7 +125,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    precio: 220
+    precio: 220,
+    VecesAlquilada: 0
 },
 {
     id: 11,
@@ -128,7 +138,8 @@ export const data = [{
     clasificacion: 8.7,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 12,
@@ -140,7 +151,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
-    precio: 175
+    precio: 175,
+    VecesAlquilada: 0
 },
 {
     id: 13,
@@ -152,7 +164,8 @@ export const data = [{
     clasificacion: 9.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-    precio: 250
+    precio: 250,
+    VecesAlquilada: 0
 },
 {
     id: 14,
@@ -164,7 +177,8 @@ export const data = [{
     clasificacion: 9.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
-    precio: 240
+    precio: 240,
+    VecesAlquilada: 0
 },
 {
     id: 15,
@@ -176,7 +190,8 @@ export const data = [{
     clasificacion: 8.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 16,
@@ -188,7 +203,8 @@ export const data = [{
     clasificacion: 8.8,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 17,
@@ -200,7 +216,8 @@ export const data = [{
     clasificacion: 8.8,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/saHP97rTPS5eLmrLQEcANmKrsFl.jpg",
-    precio: 195
+    precio: 195,
+    VecesAlquilada: 0
 },
 {
     id: 18,
@@ -212,7 +229,8 @@ export const data = [{
     clasificacion: 8.4,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/85cWkCVftiVs0BVey6pxX8uNmLt.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 19,
@@ -224,7 +242,8 @@ export const data = [{
     clasificacion: 8.8,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
-    precio: 230
+    precio: 230,
+    VecesAlquilada: 0
 },
 {
     id: 20,
@@ -236,7 +255,8 @@ export const data = [{
     clasificacion: 8.7,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
-    precio: 230
+    precio: 230,
+    VecesAlquilada: 0
 },
 {
     id: 21,
@@ -248,7 +268,8 @@ export const data = [{
     clasificacion: 8.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
-    precio: 240
+    precio: 240,
+    VecesAlquilada: 0
 },
 {
     id: 22,
@@ -260,7 +281,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 23,
@@ -272,7 +294,8 @@ export const data = [{
     clasificacion: 8.7,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7BuH8itoSrLExs2YZSsM01Qk2no.jpg",
-    precio: 215
+    precio: 215,
+    VecesAlquilada: 0
 },
 {
     id: 24,
@@ -284,7 +307,8 @@ export const data = [{
     clasificacion: 8.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mDCBQNhR6R0PVFucJl0O4Hp5klZ.jpg",
-    precio: 215
+    precio: 215,
+    VecesAlquilada: 0
 },
 {
     id: 25,
@@ -296,7 +320,8 @@ export const data = [{
     clasificacion: 7.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
-    precio: 220
+    precio: 220,
+    VecesAlquilada: 0
 },
 {
     id: 26,
@@ -308,7 +333,8 @@ export const data = [{
     clasificacion: 7.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 27,
@@ -320,7 +346,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/c414cDeQ9b6qLPLeKmiJuLDUREJ.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 28,
@@ -332,7 +359,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 29,
@@ -344,7 +372,8 @@ export const data = [{
     clasificacion: 8.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 30,
@@ -356,7 +385,8 @@ export const data = [{
     clasificacion: 8.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
-    precio: 175
+    precio: 175,
+    VecesAlquilada: 0
 },
 {
     id: 31,
@@ -368,7 +398,8 @@ export const data = [{
     clasificacion: 7.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
-    precio: 170
+    precio: 170,
+    VecesAlquilada: 0
 },
 {
     id: 32,
@@ -380,7 +411,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-    precio: 240
+    precio: 240,
+    VecesAlquilada: 0
 },
 {
     id: 33,
@@ -392,7 +424,8 @@ export const data = [{
     clasificacion: 7.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 34,
@@ -404,7 +437,8 @@ export const data = [{
     clasificacion: 7.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 35,
@@ -416,7 +450,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 36,
@@ -428,7 +463,8 @@ export const data = [{
     clasificacion: 7.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 37,
@@ -440,7 +476,8 @@ export const data = [{
     clasificacion: 7.7,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
-    precio: 205
+    precio: 205,
+    VecesAlquilada: 0
 },
 {
     id: 38,
@@ -452,7 +489,8 @@ export const data = [{
     clasificacion: 7.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/D6e8RJf2qUstnfkTslTXNTUAlT.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 39,
@@ -464,7 +502,8 @@ export const data = [{
     clasificacion: 7.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/imekS7f1OuHyUP2LAiTEM0zBzUz.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 40,
@@ -476,7 +515,8 @@ export const data = [{
     clasificacion: 6.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xLPffWMhMj1l50ND3KchMjYoKmE.jpg",
-    precio: 195
+    precio: 195,
+    VecesAlquilada: 0
 },
 {
     id: 41,
@@ -488,7 +528,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-    precio: 220
+    precio: 220,
+    VecesAlquilada: 0
 },
 {
     id: 42,
@@ -500,7 +541,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5MXyQfz8xUP3dIFPTubhTsbFY6N.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 43,
@@ -512,7 +554,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jyAgiqVSx5fl0NNj7WoGGKweXrL.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 44,
@@ -524,7 +567,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWHf4khOloNVfCxscsXFj3jj6gP.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 45,
@@ -536,7 +580,8 @@ export const data = [{
     clasificacion: 8.4,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 46,
@@ -548,7 +593,8 @@ export const data = [{
     clasificacion: 8.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ai0LXkzVM3hMJYxWwK0w7uwIGd9.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 47,
@@ -560,7 +606,8 @@ export const data = [{
     clasificacion: 8.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 48,
@@ -572,7 +619,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 49,
@@ -584,7 +632,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 50,
@@ -596,7 +645,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oPxnRhyAIzJKGUEdSiwTJQBa6hz.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 51,
@@ -608,7 +658,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
-    precio: 210
+    precio: 210,
+    VecesAlquilada: 0
 },
 {
     id: 52,
@@ -620,7 +671,8 @@ export const data = [{
     clasificacion: 8.4,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWDtjs568ZfOTMbURQBYuT4QxkC.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 53,
@@ -632,7 +684,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oRvMaJOmapypFUcQqpgHMZA6qL9.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 54,
@@ -644,7 +697,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/q719jXXEzOoYaps6babgKnONONX.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 55,
@@ -656,7 +710,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/w6XG1rN6vGq5nA6l6h2oE2leuuk.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 56,
@@ -668,7 +723,8 @@ export const data = [{
     clasificacion: 8.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sZb1g6QGyoGq2x1r3Qz5bY1l6iF.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 57,
@@ -680,7 +736,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6n9DK7brOb3Ec2Q0LMAf3xAEQvC.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 58,
@@ -692,7 +749,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f7DImXDebOs148U4uPjI61iDvaK.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 59,
@@ -704,7 +762,8 @@ export const data = [{
     clasificacion: 8.4,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4RS3yUGJ6yGzK1A4Lg6W4WkV9nG.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 60,
@@ -716,7 +775,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 61,
@@ -728,7 +788,8 @@ export const data = [{
     clasificacion: 8.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/c8Ass7acuOe4za6DhSattE359gr.jpg",
-    precio: 220
+    precio: 220,
+    VecesAlquilada: 0
 },
 {
     id: 62,
@@ -740,7 +801,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sOHqdY1RnSn6kcfAHKu28jvTebE.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 63,
@@ -752,7 +814,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/69Sns8WoET6CfaYlIkHbla4l7nC.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 64,
@@ -764,7 +827,8 @@ export const data = [{
     clasificacion: 8.6,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rplLJ2hPcOQmkFhTqUte0MkEaO2.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 65,
@@ -776,7 +840,8 @@ export const data = [{
     clasificacion: 8.5,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bUPmtQzrRhzqYySeiMpv7GurAfm.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 66,
@@ -788,7 +853,8 @@ export const data = [{
     clasificacion: 8.3,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wby9315QzVKdW9BonAefg8jGTTb.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 67,
@@ -800,7 +866,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/loRmRzQXZeqG78TqZuyvSlEQfZb.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 68,
@@ -812,7 +879,8 @@ export const data = [{
     clasificacion: 8.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nX5XotM9yprCKarRH4fzOq1VM1J.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 69,
@@ -824,7 +892,8 @@ export const data = [{
     clasificacion: 7.7,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 70,
@@ -836,7 +905,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zSqJ1qFq8NXFfi7JeIYMlzyR0dx.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 71,
@@ -848,7 +918,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zwzWCmH72OSC9NA0ipoqw5Zjya8.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 72,
@@ -860,7 +931,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iNDVb1C1l8WvK4R1g1JrR6ZQ7tG.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 73,
@@ -872,7 +944,8 @@ export const data = [{
     clasificacion: 8.2,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fIssD3w3SvIhPPmVo4WMgZDVLID.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 74,
@@ -884,7 +957,8 @@ export const data = [{
     clasificacion: 8.4,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fQMSaP88cf1nz4qwuNEEFtazuDM.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 75,
@@ -896,7 +970,8 @@ export const data = [{
     clasificacion: 8.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5gTQkKgfHNW5vCqfAKk5n6hVbqQ.jpg",
-    precio: 180
+    precio: 180,
+    VecesAlquilada: 0
 },
 {
     id: 76,
@@ -908,7 +983,8 @@ export const data = [{
     clasificacion: 8.1,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6d5XOczc226jECq0LIX0siKtgHR.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 },
 {
     id: 77,
@@ -920,7 +996,8 @@ export const data = [{
     clasificacion: 8.0,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
-    precio: 200
+    precio: 200,
+    VecesAlquilada: 0
 },
 {
     id: 78,
@@ -932,6 +1009,7 @@ export const data = [{
     clasificacion: 7.9,
     alquilada: false,
     imagen: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
-    precio: 190
+    precio: 190,
+    VecesAlquilada: 0
 }
 ]

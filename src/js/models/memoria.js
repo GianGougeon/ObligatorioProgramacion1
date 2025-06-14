@@ -1,13 +1,22 @@
 export class Memoria {
-    constructor() { }
-    leer(clave) {
-        const datos = localStorage.getItem(clave);
-        if (datos) {
-            return JSON.parse(datos);
+    escribir(clave, datos) {
+        try {
+            localStorage.setItem(clave, JSON.stringify(datos));
+        } catch (e) {
+            console.error("Error al escribir en localStorage:", e);
+            if (e.name === 'QuotaExceededError') {
+                alert("Advertencia: Se ha excedido el límite de almacenamiento del navegador para las películas e imágenes. Algunas películas podrían no guardarse.");
+            }
         }
-        return null;
     }
-    escribir(clave, dato) {
-        localStorage.setItem(clave, JSON.stringify(dato));
+
+    leer(clave) {
+        try {
+            const datos = localStorage.getItem(clave);
+            return datos ? JSON.parse(datos) : null;
+        } catch (e) {
+            console.error("Error al leer de localStorage:", e);
+            return null;
+        }
     }
 }

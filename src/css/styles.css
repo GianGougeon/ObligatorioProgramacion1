@@ -410,33 +410,30 @@ header .header-login > li a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  gap: 16px;
+  gap: 100px;
   max-width: 90%;
   margin: auto;
   padding-top: 20px;
   margin-bottom: 40px;
 }
 .tarjetas > div > div {
+  width: 333.33px;
+  height: 500px;
+  padding-bottom: 50px;
+}
+.tarjetas > div > div button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   position: relative;
 }
-.tarjetas > div > div > div {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: aliceblue;
-  background-color: blue;
-  width: 100%;
-  text-align: center;
-  height: 100px;
-  overflow: hidden;
-}
-.tarjetas > div > div > div > p {
-  text-transform: uppercase;
-}
 .tarjetas > div > div > img {
-  height: 500px;
-  overflow: hidden; /* Asegura que el gradiente no se desborde */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .btnbutton {
@@ -527,6 +524,28 @@ footer > div:nth-child(3) a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#listaPeliculas tbody {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+#listaPeliculas tbody th,
+#listaPeliculas tbody td {
+  border: 1px solid #ccc;
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+#listaPeliculas tbody th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+#listaPeliculas tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+#listaPeliculas tbody tr:hover {
+  background-color: #e6f7ff;
 }
 
 /*# sourceMappingURL=styles.css.map */
