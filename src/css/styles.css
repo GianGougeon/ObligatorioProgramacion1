@@ -419,7 +419,7 @@ header .header-login > li a {
 .tarjetas > div > div {
   position: relative;
 }
-.tarjetas > div > div > div {
+.tarjetas > div > div > div:nth-child(1) {
   position: absolute;
   top: 90%;
   left: 50%;
@@ -431,12 +431,25 @@ header .header-login > li a {
   height: 100px;
   overflow: hidden;
 }
-.tarjetas > div > div > div > p {
+.tarjetas > div > div > div:nth-child(1) > p {
   text-transform: uppercase;
+}
+.tarjetas > div > div > div:nth-child(3) {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
 }
 .tarjetas > div > div > img {
   height: 500px;
-  overflow: hidden; /* Asegura que el gradiente no se desborde */
+  overflow: hidden;
+  /* Asegura que el gradiente no se desborde */
 }
 
 .btnbutton {

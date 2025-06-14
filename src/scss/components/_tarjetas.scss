@@ -1,6 +1,7 @@
 .tarjetas {
     display: flex;
-    > div {
+
+    >div {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
@@ -9,9 +10,11 @@
         margin: auto;
         padding-top: 20px;
         margin-bottom: 40px;
-        > div {
+
+        >div {
             position: relative;
-            > div {
+
+            >div:nth-child(1) {
                 position: absolute;
                 top: 90%;
                 left: 50%;
@@ -22,13 +25,31 @@
                 text-align: center;
                 height: 100px;
                 overflow: hidden;
-                > p {
+
+                >p {
                     text-transform: uppercase;
                 }
             }
-            > img {
+
+            >div:nth-child(3) {
+                position: absolute;
+                top: 5%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: aliceblue;
+                background-color: transparent;
+                width: 100%;
+                text-align: center;
+                height: 100px;
+                overflow: hidden;
+
+
+            }
+
+            >img {
                 height: 500px;
-                overflow: hidden; /* Asegura que el gradiente no se desborde */
+                overflow: hidden;
+                /* Asegura que el gradiente no se desborde */
             }
         }
     }
