@@ -45,6 +45,7 @@ const imprimirPeliculas = (peliculas) => {
                 <p>Titulo: ${pelicula.titulo}</p>
                     <p>Genero: ${pelicula.genero}</p>
                     <p>Clasificacion: ${pelicula.clasificacion}</p>
+                    <p>Precio: $${pelicula.precio}</p>
                     <button class="btn" data-id="${pelicula.id}">Alquilar</button>
                 </div>
             </div>

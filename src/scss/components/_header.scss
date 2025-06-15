@@ -5,13 +5,19 @@ header {
     flex-direction: column;
     justify-content: space-between;
     text-transform: uppercase;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     padding: 1rem 0;
-
-    > div:nth-child(1) {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    > div {
         display: flex;
         justify-content: space-between;
         padding: 0 1rem;
+        > div {
+            img {
+                height: 5rem;
+                width: 5rem;
+            }
+        }
+        // 
         > ul {
             display: flex;
             width: 100vh;
@@ -20,6 +26,12 @@ header {
             > li {
                 > a {
                     color: aliceblue;
+                    text-decoration: none;
+                    font-size: 1.2rem;
+                    &:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -33,22 +45,13 @@ header {
             }
         }
     }
-
-   .datos {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem 0;
-        > h1 {
-            color: aliceblue;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        > p {
-            color: aliceblue;
-            font-size: 1.2rem;
-        }
+}
+.logo {
+    display: flex;
+    align-items: center;
+    img {
+        height: 5rem;
+        width: 5rem;
+        margin-right: 1rem;
     }
 }

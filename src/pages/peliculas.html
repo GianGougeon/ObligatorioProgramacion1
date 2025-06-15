@@ -1,62 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="module" src="./../js/peliculas.js" defer></script>
+        <link rel="stylesheet" href="./../css/styles.css" />
+        <title>Peliculas</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./../js/peliculas.js" defer></script>
-    <link rel="stylesheet" href="./../css/styles.css" />
-    <title>Peliculas</title>
-</head>
-
-<body>
-    <header>
-        <div>
-            <div class="logo">
-                <div class="svg">
-                    <img src="./../assets/images/logo.png" alt="Logo PelisFlix" />
+    <body>
+        <header>
+            <div>
+                <div class="logo">
+                    <img src="./../assets/images/logoheader.png" alt="logo" />
                 </div>
-                <div>
-                    <h1>Pelis<span>Flix</span></h1>
-                </div>
+                <ul>
+                    <li>
+                        <a href="./../../index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./peliculas.html">Películas</a>
+                    </li>
+                    <li>
+                        <a href="../pages/nosotros.html">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href=""><button class="btn">Tus peliculas</button></a>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li>
-                    <a href="./../../index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="#">Ofertas</a>
-
-                </li>
-                <nav class="generos">
-                    <ul>
-                        <li>
-                            <a href="#">Géneros</a>
-                            <ul>
-                                <li><a href="./terror.html">Terror</a></li>
-                                <li><a href="./accion.html">Acción</a></li>
-                                <li><a href="./comedia.html">Comedia</a></li>
-                                <li><a href="./drama.html">Drama</a></li>
-                                <li><a href="./cienciaficcion.html">Ciencia Ficcion</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-
-                <li>
-                    <a href="./nosotros.html">Nosotros</a>
-                </li>
-                <li>
-                    <a href=""><button class="btn">Tus peliculas</button></a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <section class="tarjetas" id="tarjetas">
-        <div id="tarjetasPeliculas">
-            <!-- Aquí se agregan las tarjetas de películas dinámicamente -->
-        </div>
-    </section>
-</body>
-
+        </header>
+        <section class="tarjetas" id="tarjetas">
+            <div id="tarjetasPeliculas">
+                <!-- Aquí se agregan las tarjetas de películas dinámicamente -->
+            </div>
+        </section>
+        <footer>
+            <div class="logo">
+                <img src="../assets/images/logoheader.png" alt="" />
+            </div>
+            <div>© 2025 PelisFlix</div>
+            <div>
+                <p>Privacidad</p>
+                <p>Términos</p>
+                <p>Contacto</p>
+            </div>
+        </footer>
+    </body>
 </html>

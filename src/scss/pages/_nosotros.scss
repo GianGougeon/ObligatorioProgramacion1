@@ -1,0 +1,50 @@
+@use "../_variables";
+
+.nosotros-section {
+    background-color: variables.$background-color;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+
+    > div {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 30px;
+
+        > h1 {
+            font-size: 3em;
+            margin-bottom: 25px;
+            color: #fff;
+            position: relative;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 100px;
+                height: 4px;
+                background-color: variables.$primary-color;
+                margin: 15px auto 0;
+                border-radius: 2px;
+            }
+        }
+
+        > p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+
+            strong {
+                font-weight: 700;
+            }
+
+            em {
+                font-style: italic;
+            }
+        }
+    }
+}

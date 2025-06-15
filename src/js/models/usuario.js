@@ -1,15 +1,19 @@
-export class UsuariosMemoria {
+export class UsuarioMemoria {
     constructor() { }
 
-    leerUsuarios() {
-        const datos = localStorage.getItem('usuarios');
+    leerUsuario() {
+        const datos = localStorage.getItem('usuario');
         if (datos) {
             return JSON.parse(datos);
         }
-        return [];
+        return null;
     }
 
-    escribirUsuarios(usuarios) {
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    escribirUsuario(usuario) {
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+    }
+
+    eliminarUsuario() {
+        localStorage.removeItem('usuario');
     }
 }

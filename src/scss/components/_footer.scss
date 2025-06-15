@@ -5,7 +5,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     padding: 1rem;
     color: white;
 
@@ -20,10 +19,16 @@ footer {
     > div:nth-child(3) {
         display: flex;
         flex-direction: column;
-        a {
-            //un margen de 0.5rem entre los enlaces
-            margin: 0.5rem 0;
-            color: rgb(19, 59, 94);
+        margin: 0 2rem;
+
+        > p {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: 0.9rem;
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
 }

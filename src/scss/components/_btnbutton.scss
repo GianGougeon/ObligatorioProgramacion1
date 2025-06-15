@@ -26,6 +26,7 @@ $color: #afffff;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
     clip-path: polygon(0% $curve-size, $curve-size 0, 100% 0, 100% calc(100% - $curve-size), calc(100% - $curve-size) 100%, 0 100%);
     transition: color 250ms;
+    text-decoration: none;
 
     &::after,
     &::before {
@@ -51,7 +52,6 @@ $color: #afffff;
     &:hover,
     &:focus {
         color: #fff;
-
         &::after {
             clip-path: polygon(calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - $border-width) $border-width, calc(100% - $border-width) $border-width, calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width));
             transition: 200ms;

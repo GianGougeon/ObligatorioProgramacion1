@@ -1,5 +1,10 @@
+// variables
+@use "../variables";
 .tarjetas {
     display: flex;
+    padding: 3rem 0;
+    background-color: variables.$background-color;
+    color: aliceblue;
     > div {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -11,10 +16,9 @@
         margin-bottom: 40px;
         > div {
             max-width: 333.33px;
-           max-height: 500px; 
+            max-height: 500px;
             padding-bottom: 50px;
-            
-           
+
             button {
                 width: 100%;
                 height: 100%;
@@ -30,5 +34,12 @@
                 object-position: center;
             }
         }
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-wrap: nowrap;
     }
 }
