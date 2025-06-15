@@ -3,6 +3,7 @@ import { peliculas } from "./models/peliculas.js";
 import { Memoria } from "./models/memoria.js";
 import { data } from "./data.js";
 
+
 // Mi lista de películas actual. La inicio con una copia de 'data'.
 let peliculasArray = [...data];
 
@@ -10,6 +11,7 @@ let peliculasArray = [...data];
 const inicio = () => {
     // Al enviar el formulario de película, llamo a 'agregarPelicula'.
     document.getElementById("pelicula-form").addEventListener("submit", agregarPelicula);
+    document.getElementById("modificar-form").addEventListener("submit", modificarPelicula);
 }
 
 // Añade una nueva película a la lista desde el formulario.
@@ -21,8 +23,8 @@ const agregarPelicula = (event) => {
     const generarId = () => {
         return Math.floor(Math.random() * 10000);
     }
-  
-    
+
+
 
     // Obtengo los datos del formulario.
     const form = event.target;
@@ -170,16 +172,56 @@ const mostrarEstadisticas = () => {
         <p><strong>Suma total Recaudado del dia:</strong> $${totalPrecio}</p>
         <p><strong>Película(s) más alquilada(s):</strong></p>
         <ul>
-            ${
-                masAlquiladas.length
-                    ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
-                    : "<li>Ninguna aún</li>"
-            }
+            ${masAlquiladas.length
+            ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
+            : "<li>Ninguna aún</li>"
+        }
         </ul>
     `;
 
 };
 
+const modificarPelicula = (event) => {
+    event.preventDefault();
+
+    // Obtiene el ID ingresado en el formulario
+    const form = event.target;
+    const id = parseInt(form.querySelector("#modificar-id").value);
+
+    // Busca la película por ID
+    const pelicula = peliculasArray.find(p => p.id === id);
+    if (!pelicula) {
+        alert("Película no encontrada con ese ID.");
+        return;
+    }
+
+    // Obtiene los nuevos valores del formulario
+    const nuevoTitulo = form.querySelector("#modificar-titulo").value;
+    const nuevoGenero = form.querySelector("#modificar-genero").value;
+    const nuevoDirector = form.querySelector("#modificar-director").value;
+    const nuevoPais = form.querySelector("#modificar-pais").value;
+    const nuevoAnio = form.querySelector("#modificar-anio").value;
+    const nuevoClasificacion = form.querySelector("#modificar-clasificacion").value;
+    const nuevoPrecio = form.querySelector("#modificar-precio").value;
+
+    // Actualiza solo los campos que no estén vacíos
+    if (nuevoTitulo) pelicula.titulo = nuevoTitulo;
+    if (nuevoGenero) pelicula.genero = nuevoGenero;
+    if (nuevoDirector) pelicula.director = nuevoDirector;
+    if (nuevoPais) pelicula.pais = nuevoPais;
+    if (nuevoAnio) pelicula.anio = parseInt(nuevoAnio) || pelicula.anio;
+    if (nuevoClasificacion) pelicula.clasificacion = nuevoClasificacion;
+    if (nuevoPrecio) pelicula.precio = parseFloat(nuevoPrecio) || pelicula.precio;
+
+    // Guarda los cambios en memoria
+    const LaMemoria = new Memoria();
+    LaMemoria.escribir("peliculas", peliculasArray);
+
+    listarPeliculas();
+    mostrarEstadisticas();
+    form.reset();
+    alert("Película modificada correctamente.");
+};
 
 // Carga las películas guardadas al iniciar la app.
 const cargarPeliculas = () => {
@@ -202,7 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
     inicio();
     cargarPeliculas();
     mostrarEstadisticas();
-    
+
+
 });
 
 // 

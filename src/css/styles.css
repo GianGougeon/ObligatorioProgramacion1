@@ -428,6 +428,9 @@ footer > div:nth-child(3) > p:hover {
   align-items: center;
 }
 
+.listaPeliculas {
+  margin-bottom: 4rem;
+}
 .listaPeliculas tbody {
   width: 100%;
   border-collapse: collapse;
@@ -450,6 +453,87 @@ footer > div:nth-child(3) > p:hover {
   background-color: #e6f7ff;
 }
 
+#peliculas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  background-color: #f0f2f5;
+}
+#peliculas-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 2rem;
+}
+#peliculas-grid > div h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+#peliculas-grid section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#peliculas-grid section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  color: #333;
+}
+#peliculas-grid .formulario {
+  display: grid;
+  gap: 15px;
+}
+#peliculas-grid .formulario .campo {
+  display: grid;
+  gap: 5px;
+}
+#peliculas-grid .formulario .campo label {
+  font-weight: bold;
+  color: #444;
+}
+#peliculas-grid .formulario .campo input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+#peliculas-grid .formulario .campo input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+#peliculas-grid .formulario button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#peliculas-grid .formulario button:hover {
+  background-color: #0056b3;
+}
+#peliculas-grid #estadisticasPeliculas {
+  padding: 15px;
+  text-wrap: nowrap;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  color: #333;
+  font-size: 1rem;
+  text-align: center;
+}
+#peliculas-grid #estadisticasPeliculas strong {
+  font-weight: bold;
+}
+
 .sesion {
   margin: 0;
   height: 100vh;
@@ -458,59 +542,6 @@ footer > div:nth-child(3) > p:hover {
   justify-content: center;
   background: #f2f2f2;
   font-family: Arial, sans-serif;
-}
-
-form {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-}
-form input[type=text],
-form input[type=email],
-form input[type=password],
-form textarea {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-form input[type=text]:focus,
-form input[type=email]:focus,
-form input[type=password]:focus,
-form textarea:focus {
-  border-color: #007bff;
-  outline: none;
-}
-form button {
-  width: auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-form button:hover {
-  background-color: #0056b3;
-}
-
-.formulario {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
 }
 
 .nosotros-section {

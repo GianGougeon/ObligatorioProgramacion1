@@ -30,7 +30,7 @@
                 </ul>
             </div>
         </header>
-        <section id="formulario-pelicula">
+        <!-- <section id="formulario-pelicula">
             <h2>Agregar Nueva Película</h2>
             <form id="pelicula-form" class="formulario">
                 <div class="campo">
@@ -71,10 +71,105 @@
                 <h2>Estadísticas</h2>
                 <div id="estadisticasPeliculas"></div>
             </section>
-        </section>
+        </section> -->
+        <section id="peliculas-grid">
+            <div id="formulario-pelicula">
+                <div>
+                    <h2>Agregar Nueva Película</h2>
+                    <form id="pelicula-form" class="formulario">
+                        <div class="campo">
+                            <label for="titulo">Título:</label>
+                            <input type="text" id="titulo" required />
+                        </div>
+                        <div class="campo">
+                            <label for="genero">Género:</label>
+                            <input type="text" id="genero" required />
+                        </div>
+                        <div class="campo">
+                            <label for="director">Director:</label>
+                            <input type="text" id="director" required />
+                        </div>
+                        <div class="campo">
+                            <label for="pais">País:</label>
+                            <input type="text" id="pais" required />
+                        </div>
+                        <div class="campo">
+                            <label for="anio">Año:</label>
+                            <input type="number" id="anio" required />
+                        </div>
+                        <div class="campo">
+                            <label for="clasificacion">Clasificación:</label>
+                            <input type="text" id="clasificacion" required />
+                        </div>
+                        <div class="campo">
+                            <label for="precio">Precio:</label>
+                            <input type="number" id="precio" step="0.01" required />
+                        </div>
+                        <div class="campo">
+                            <label for="imagen">Seleccionar Imagen:</label>
+                            <input type="file" id="imagen" accept="image/*" />
+                        </div>
+                        <button type="submit" id="agregar-pelicula" class="btn">Agregar Película</button>
+                    </form>
+                </div>
+            </div>
 
+            <div id="estadisticas">
+                <h2>Estadísticas</h2>
+                <div id="estadisticasPeliculas"></div>
+            </div>
+
+            <div id="formulario-modificar">
+                <h2>Modificar Película</h2>
+                <form id="modificar-form" class="formulario">
+                    <div class="campo">
+                        <label for="modificar-id">ID de Película:</label>
+                        <input type="text" id="modificar-id" required />
+                            </div>
+                    <div class="campo">
+                        <label for="modificar-titulo">Título:</label>
+                        <input type="text" id="modificar-titulo" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-genero">Género:</label>
+                        <input type="text" id="modificar-genero" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-director">Director:</label>
+                        <input type="text" id="modificar-director" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-pais">País:</label>
+                        <input type="text" id="modificar-pais" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-anio">Año:</label>
+                        <input type="number" id="modificar-anio" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-clasificacion">Clasificación:</label>
+                        <input type="text" id="modificar-clasificacion" />
+                    </div>
+                    <div class="campo">
+                        <label for="modificar-precio">Precio:</label>
+                        <input type="number" id="modificar-precio" step="0.01" />
+                    </div>
+                    <button type="submit" id="modificar-pelicula" class="btn">Modificar Película</button>
+                </form>
+            </div>
+        </section>
         <section id="listaPeliculas" class="listaPeliculas">
             <h2>Películas Disponibles</h2>
         </section>
+        <footer>
+            <div class="logo">
+                <img src="../assets/images/logoheader.png" alt="" />
+            </div>
+            <div>© 2025 PelisFlix</div>
+            <div>
+                <p>Privacidad</p>
+                <p>Términos</p>
+                <p>Contacto</p>
+            </div>
     </body>
 </html>
