@@ -8,7 +8,7 @@ header {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     padding: 1rem 0;
 
-    > div {
+    > div:nth-child(1) {
         display: flex;
         justify-content: space-between;
         padding: 0 1rem;
@@ -31,6 +31,24 @@ header {
             a {
                 color: aliceblue;
             }
+        }
+    }
+
+   .datos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        > h1 {
+            color: aliceblue;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        > p {
+            color: aliceblue;
+            font-size: 1.2rem;
         }
     }
 }

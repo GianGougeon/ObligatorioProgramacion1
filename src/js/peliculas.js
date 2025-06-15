@@ -42,8 +42,8 @@ const imprimirPeliculas = (peliculas) => {
             <div class="card">
                 <img src="${pelicula.imagen}" alt="${pelicula.titulo}" />
                 <div class="card-body">
+                <p>Titulo: ${pelicula.titulo}</p>
                     <p>Genero: ${pelicula.genero}</p>
-                    <p>Titulo: ${pelicula.titulo}</p>
                     <p>Clasificacion: ${pelicula.clasificacion}</p>
                     <button class="btn" data-id="${pelicula.id}">Alquilar</button>
                 </div>

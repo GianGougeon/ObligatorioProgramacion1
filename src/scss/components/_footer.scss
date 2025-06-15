@@ -12,8 +12,8 @@ footer {
     > div:nth-child(2) {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-end;
-        /* Alinea a la derecha dentro de su contenedor */
+        justify-content: center;
+        /* Alinea al centro dentro de su contenedor */
         gap: 1rem;
     }
 
@@ -21,6 +21,8 @@ footer {
         display: flex;
         flex-direction: column;
         a {
+            //un margen de 0.5rem entre los enlaces
+            margin: 0.5rem 0;
             color: rgb(19, 59, 94);
         }
     }

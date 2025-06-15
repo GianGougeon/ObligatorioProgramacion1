@@ -21,6 +21,8 @@ const agregarPelicula = (event) => {
     const generarId = () => {
         return Math.floor(Math.random() * 10000);
     }
+  
+    
 
     // Obtengo los datos del formulario.
     const form = event.target;
@@ -74,6 +76,7 @@ const agregarPelicula = (event) => {
         // Actualizo la interfaz y limpio el formulario.
         listarPeliculas();
         form.reset();
+        mostrarEstadisticas();
     }).catch(errorUrl => {
         // Si la imagen falla, creo la película igual pero sin imagen.
         const nuevaPelicula = new peliculas(
@@ -89,6 +92,7 @@ const agregarPelicula = (event) => {
         listarPeliculas();
         form.reset();
         alert("Error al cargar la imagen, se usará una imagen por defecto.");
+        mostrarEstadisticas();
     });
 };
 
@@ -146,6 +150,35 @@ const listarPeliculas = () => {
 
     console.log(peliculasArray); // Verifico la lista en consola.
 }
+const mostrarEstadisticas = () => {
+    const contenedor = document.getElementById("estadisticasPeliculas");
+    if (!contenedor) return;
+
+    // Filtrar películas alquiladas
+    const alquiladas = peliculasArray.filter(p => p.alquilada);
+
+    // Sumar precios
+    const totalPrecio = alquiladas.reduce((acum, p) => acum + p.precio, 0);
+
+    // Encontrar la(s) más alquilada(s)
+    const maxVeces = Math.max(...peliculasArray.map(p => p.VecesAlquilada));
+    const masAlquiladas = peliculasArray.filter(p => p.VecesAlquilada === maxVeces && maxVeces > 0);
+
+    // Armar HTML
+    contenedor.innerHTML = `
+        <p><strong>Total de películas alquiladas:</strong> ${alquiladas.length}</p>
+        <p><strong>Suma total Recaudado del dia:</strong> $${totalPrecio}</p>
+        <p><strong>Película(s) más alquilada(s):</strong></p>
+        <ul>
+            ${
+                masAlquiladas.length
+                    ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
+                    : "<li>Ninguna aún</li>"
+            }
+        </ul>
+    `;
+
+};
 
 
 // Carga las películas guardadas al iniciar la app.
@@ -159,7 +192,8 @@ const cargarPeliculas = () => {
     } else {
         peliculasArray = [...data];
     }
-    listarPeliculas(); // Muestro la lista cargada.
+    listarPeliculas();
+    mostrarEstadisticas(); // Muestro la lista cargada.
 };
 
 
@@ -167,4 +201,8 @@ const cargarPeliculas = () => {
 document.addEventListener("DOMContentLoaded", () => {
     inicio();
     cargarPeliculas();
+    mostrarEstadisticas();
+    
 });
+
+// 
