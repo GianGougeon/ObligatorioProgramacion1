@@ -172,13 +172,11 @@ const mostrarEstadisticas = () => {
         <p><strong>Suma total Recaudado del dia:</strong> $${totalPrecio}</p>
         <p><strong>Película(s) más alquilada(s):</strong></p>
         <ul>
-            ${masAlquiladas.length
-            ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
+            ${masAlquiladas.length ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
             : "<li>Ninguna aún</li>"
         }
         </ul>
     `;
-
 };
 
 const modificarPelicula = (event) => {
@@ -238,14 +236,21 @@ const cargarPeliculas = () => {
     mostrarEstadisticas(); // Muestro la lista cargada.
 };
 
+// Verifica si el usuario está logueado, sino esta, no deja entra a datos.html
+const checkUser = () => {
+    const LaMemoria = new Memoria();
+    const usuario = LaMemoria.leer("usuario");
+
+    if (!usuario) {
+        // Si no hay usuario, redirigir a la página de inicio de sesión
+        window.location.href = "./sesion.html";
+    }
+};
 
 // Cuando el HTML esté listo, ejecuto mis funciones de inicio y carga.
 document.addEventListener("DOMContentLoaded", () => {
     inicio();
     cargarPeliculas();
     mostrarEstadisticas();
-
-
+    checkUser();
 });
-
-// 
