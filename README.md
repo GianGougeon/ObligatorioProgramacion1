@@ -63,18 +63,18 @@ Puedes acceder a la aplicación desplegada en GitHub Pages en el siguiente enlac
 
 ## 👨‍💻 Autores
 
-Gianfranco Gougeon - [GitHub](https://github.com/GianGougeon)
-Santiago Pino - [GitHub](https://github.com/pichilo)
+- Gianfranco Gougeon - [GitHub](https://github.com/GianGougeon)
+- Santiago Pino - [GitHub](https://github.com/pichilo)
 
 ---
 
 ## 📷 Imágenes de la aplicación
 
-![Home](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/main/screenshots/home.png?raw=true)
+![Home](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/master/screenshots/home.png?raw=true)
 ##
-![Peliculas](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/main/screenshots/peliculas.png?raw=true)
+![Peliculas](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/master/screenshots/peliculas.png?raw=true)
 ##
-![Admin](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/main/screenshots/admin.png?raw=true)
+![Admin](https://github.com/GianGougeon/ObligatorioProgramacion1/blob/master/screenshots/admin.png?raw=true)
 
 ---
 
