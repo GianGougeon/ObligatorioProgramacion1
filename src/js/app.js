@@ -1,7 +1,7 @@
 // Módulos: clases y datos necesarios
 import { peliculas } from "./models/peliculas.js";
 import { Memoria } from "./models/memoria.js";
-import { data } from "./data.js";
+import { data } from "./data/data.js";
 
 // Lista principal de películas
 let peliculasArray = [...data];
@@ -14,62 +14,81 @@ const inicio = () => {
 
 // Agrega una nueva película
 const agregarPelicula = (event) => {
+    // Evito la recarga de la página.
     event.preventDefault();
+
+    // Genero un ID único.
+    const generarId = () => {
+        return Math.floor(Math.random() * 10000);
+    }
+
+    // Obtengo los datos del formulario.
     const form = event.target;
-
-    const generarId = () => Math.floor(Math.random() * 10000);
     const id = generarId();
+    const titulo = form.querySelector("#titulo").value;
+    const genero = form.querySelector("#genero").value;
+    const director = form.querySelector("#director").value;
+    const pais = form.querySelector("#pais").value;
+    const anio = parseInt(form.querySelector("#anio").value);
+    const clasificacion = form.querySelector("#clasificacion").value;
+    const alquilada = false;
+    const precio = parseFloat(form.querySelector("#precio").value);
+    const imagenInput = form.querySelector("#imagen");
+    const VecesAlquilada = 0;
 
-    const nueva = {
-        titulo: form.titulo.value,
-        genero: form.genero.value,
-        director: form.director.value,
-        pais: form.pais.value,
-        anio: parseInt(form.anio.value),
-        clasificacion: form.clasificacion.value,
-        precio: parseFloat(form.precio.value),
-        imagen: "",
-        id,
-        alquilada: false,
-        VecesAlquilada: 0
-    };
-
-    if (Object.values(nueva).some(v => v === "" || v === undefined || Number.isNaN(v))) {
-        alert("Completa todos los campos correctamente.");
+    // Valido que los campos importantes estén llenos.
+    if (!titulo || !genero || !director || !pais || isNaN(anio) || !clasificacion || isNaN(precio)) {
+        alert("Por favor, completa todos los campos obligatorios.");
         return;
     }
 
-    const imagenInput = form.imagen;
-    const reader = new FileReader();
-
-    const cargarImagen = new Promise((resolve, reject) => {
+    // Promesa para leer la imagen subida a Data URL.
+    const leerImagenComoDataURL = new Promise((resolve, reject) => {
         if (imagenInput.files.length > 0) {
-            reader.onload = e => resolve(e.target.result);
-            reader.onerror = () => reject("");
-            reader.readAsDataURL(imagenInput.files[0]);
+            const file = imagenInput.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = (error) => {
+                console.error("Error al leer la imagen:", error);
+                reject(""); // Si falla, retorno vacío.
+            };
+            reader.readAsDataURL(file);
         } else {
-            resolve("");
+            resolve(""); // Si no hay imagen, retorno vacío.
         }
     });
 
-    cargarImagen.then((imagen) => {
-        nueva.imagen = imagen;
-        const nuevaPelicula = new peliculas({ ...nueva });
-        peliculasArray.push(nuevaPelicula);
+    // Cuando la imagen se procesa...
+    leerImagenComoDataURL.then((imagenDataUrl) => {
+        // Creo la nueva película con los datos y la URL de la imagen.
+        const nuevaPelicula = new peliculas(
+            id, titulo, genero, director, pais, anio, clasificacion,
+            alquilada, VecesAlquilada, precio, imagenDataUrl
+        );
 
-        new Memoria().escribir("peliculas", peliculasArray);
-        listarPeliculas();
-        form.reset();
-        mostrarEstadisticas();
-    }).catch(() => {
-        alert("Error al cargar imagen. Se usará una por defecto.");
-        nueva.imagen = "";
-        const nuevaPelicula = new peliculas({ ...nueva });
+        // La añado a mi lista y la guardo.
         peliculasArray.push(nuevaPelicula);
-        new Memoria().escribir("peliculas", peliculasArray);
+        const LaMemoria = new Memoria();
+        LaMemoria.escribir("peliculas", peliculasArray);
+
+        // Actualizo la interfaz y limpio el formulario.
         listarPeliculas();
         form.reset();
-        mostrarEstadisticas();
+    }).catch(errorUrl => {
+        // Si la imagen falla, creo la película igual pero sin imagen.
+        const nuevaPelicula = new peliculas(
+            id, titulo, genero, director, pais, anio, clasificacion,
+            alquilada, VecesAlquilada, precio, errorUrl
+        );
+
+        // La añado, la guardo y actualizo.
+        peliculasArray.push(nuevaPelicula);
+        const LaMemoria = new Memoria();
+        LaMemoria.escribir("peliculas", peliculasArray);
+
+        listarPeliculas();
+        form.reset();
+        alert("Error al cargar la imagen, se usará una imagen por defecto.");
     });
 };
 
@@ -133,7 +152,17 @@ const mostrarEstadisticas = () => {
         <p><strong>Alquiladas:</strong> ${alquiladas.length}</p>
         <p><strong>Total recaudado:</strong> $${total}</p>
         <p><strong>Más alquiladas:</strong></p>
-        <ul>${populares.length ? populares.map(p => `<li>${p.titulo} (${p.VecesAlquilada})</li>`).join("") : "<li>Ninguna</li>"}</ul>
+        <table border="1">
+            <tr>
+                <th>Cantidad</th>
+                <th>Nombre</th>
+            </tr>
+            ${
+                populares.length
+                    ? populares.map(p => `<tr><td>${p.VecesAlquilada}</td><td class>${p.titulo}</td></tr>`).join("")
+                    : `<tr><td colspan="2">Ninguna</td></tr>`
+            }
+        </table>
     `;
 };
 
@@ -183,6 +212,18 @@ const cargarPeliculas = () => {
     listarPeliculas();
     mostrarEstadisticas();
 };
+// Reinicia la memoria eliminando películas alquiladas
+const reiniciarMemoria = () => {
+    // Marca todas las películas como NO alquiladas, pero conserva VecesAlquilada
+    peliculasArray.forEach(p => {
+        p.alquilada = false;
+        delete p.nombreCliente; // Opcional: limpia el nombre del cliente si existe
+    });
+    new Memoria().escribir("peliculas", peliculasArray);
+    listarPeliculas();
+    mostrarEstadisticas();
+    alert("Se han reiniciado los estados de alquiler de todas las películas.");
+};
 
 // Verifica si hay usuario logueado
 const checkUser = () => {
@@ -197,4 +238,5 @@ document.addEventListener("DOMContentLoaded", () => {
     checkUser();
 });
 
+document.querySelector("#reiniciar-memoria").addEventListener("click", reiniciarMemoria);
 document.querySelector("#eliminar-pelicula").addEventListener("click", eliminarPeliculaDesdeFormulario);

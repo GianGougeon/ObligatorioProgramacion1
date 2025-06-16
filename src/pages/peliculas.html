@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="module" src="./../js/peliculas.js" defer></script>
+        <link rel="stylesheet" href="./../css/styles.css" />
+        <title>Peliculas</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./../js/peliculas.js" defer></script>
-    <link rel="stylesheet" href="./../css/styles.css" />
-    <title>Peliculas</title>
-</head>
-
-<body>
-    <header>
-
-        <div>
-            <div class="logo">
-                <img src="./../assets/images/logoheader.png" alt="logo" />
+    <body>
+        <header>
+            <div>
+                <div class="logo">
+                    <img src="./../assets/images/logoheader.png" alt="logo" />
+                </div>
+                <ul>
+                    <li>
+                        <a href="./../../index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./peliculas.html">Películas</a>
+                    </li>
+                    <li>
+                        <a href="../pages/nosotros.html">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href=""><button class="btn">Tus peliculas</button></a>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li>
-                    <a href="./../../index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="./peliculas.html">Películas</a>
-                </li>
-                <li>
-                    <a href="../pages/nosotros.html">Nosotros</a>
-                </li>
-                <li>
-                    <a href=""><button class="btn">Tus peliculas</button></a>
-                </li>
-            </ul>
-        </div>
-        <!-- Filtro por género -->
-        <div class="filtro-genero">
-            <label for="filtro-genero">Filtrar por género:</label>
-
-            <select id="filtro-genero" class="btn">
-                <option value="Todos">Todos</option>
-                <option value="Accion">Acción</option>
-                <option value="Terror">Terror</option>
-                <option value="Comedia">Comedia</option>
-                <option value="Drama">Drama</option>
-                <option value="Ciencia Ficcion">Ciencia Ficción</option>
-                <!-- Agregá más si necesitás -->
-            </select>
-        </div>
-    </header>
-    <section class="tarjetas" id="tarjetas">
-
-        <div id="tarjetasPeliculas">
-            <!-- Aquí se agregan las tarjetas de películas dinámicamente -->
-        </div>
-    </section>
-    <footer>
-        <section id="misPeliculas" style="display: none; padding: 2rem;">
-            <h2 style="color: white;">Películas Alquiladas</h2>
-            <div id="peliculasAlquiladas" class=""></div>
-            <p id="totalPagar" style="color: white; font-size: 1.2rem; margin-top: 1rem;"></p>
+            <!-- Filtro por género -->
+            <div class="filtro-genero">
+                <label for="filtro-genero">Filtrar por género:</label>
+                <select id="filtro-genero" class="btn">
+                    <option value="Todos">Todos</option>
+                    <option value="Accion">Acción</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Ciencia Ficcion">Ciencia Ficción</option>
+                    <!-- Agregá más si necesitás -->
+                </select>
+            </div>
+        </header>
+        <!-- Tarjetas de películas -->
+        <section class="tarjetas" id="tarjetas">
+            <div id="tarjetasPeliculas">
+                <!-- Aquí se agregan las tarjetas de películas dinámicamente -->
+            </div>
         </section>
-        <div class="logo">
-            <img src="../assets/images/logoheader.png" alt="" />
-        </div>
-        <div>© 2025 PelisFlix</div>
-        <div>
-            <p>Privacidad</p>
-            <p>Términos</p>
-            <p>Contacto</p>
-        </div>
-    </footer>
-</body>
-
+        <!-- Tarjetas de películas alquiladas -->
+        <section id="misPeliculas" class="mis-peliculas" style="display: none;">
+            <h3>Películas Alquiladas</h3>
+            <div class="tarjetas">
+                <div id="peliculasAlquiladas"></div>
+            </div>
+            <p id="totalPagar"></p>
+        </section>
+        <footer>
+            <div class="logo">
+                <img src="../assets/images/logoheader.png" alt="" />
+            </div>
+            <div>© 2025 PelisFlix</div>
+            <div>
+                <p>Privacidad</p>
+                <p>Términos</p>
+                <p>Contacto</p>
+            </div>
+        </footer>
+    </body>
 </html>

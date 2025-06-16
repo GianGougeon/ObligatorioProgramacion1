@@ -1,8 +1,8 @@
+@use "../variables";
 .inicio {
     padding: 5rem;
     font-family: sans-serif;
-    // background-image: linear-gradient(#201f21, #615aca);
-    background-color: #201f21;
+    background-color: variables.$background-color;
     height: 70vh;
     display: inline-block;
 

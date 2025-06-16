@@ -1,6 +1,6 @@
 // cargar peliculas desde localstorage con fetch
 import { Memoria } from "./models/memoria.js";
-import { data } from "./data.js";
+import { data } from "./data/data.js";
 import { MemoriasAlquiladas } from "./models/memoriasAlquiladas.js";
 
 let peliculasGuardadas = [...data];
@@ -20,15 +20,6 @@ const cargarPeliculas = async () => {
         return peliculasGuardadas;
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    cargarPeliculas().then(peliculas => {
-        console.log("Películas cargadas desde memoria:", peliculas);
-        imprimirPeliculas(peliculas);
-    }).catch(error => {
-        console.error("Error al cargar las películas:", error);
-    });
-});
 
 const imprimirPeliculas = (peliculas) => {
     console.log("Imprimiendo películas:", peliculas);
@@ -70,34 +61,34 @@ const imprimirPeliculas = (peliculas) => {
         }
 
         boton.addEventListener("click", () => {
-    // Solicitar el nombre del cliente.
-    const nombreCliente = prompt("Por favor, ingresá tu nombre para alquilar la película:");
-    if (!nombreCliente || nombreCliente.trim() === "") {
-        alert("Debés ingresar un nombre válido para alquilar la película.");
-        return;
-    }
+            // Solicitar el nombre del cliente.
+            const nombreCliente = prompt("Por favor, ingresá tu nombre para alquilar la película:");
+            if (!nombreCliente || nombreCliente.trim() === "") {
+                alert("Debés ingresar un nombre válido para alquilar la película.");
+                return;
+            }
 
-    // Asignamos el nombre del cliente a la película.
-    pelicula.nombreCliente = nombreCliente.trim();
-    
-    // Marcar la película como alquilada y aumentar su contador (por si querés conocer cuántas veces se alquiló).
-    pelicula.alquilada = true;
-    pelicula.VecesAlquilada = (pelicula.VecesAlquilada || 0) + 1;
+            // Asignamos el nombre del cliente a la película.
+            pelicula.nombreCliente = nombreCliente.trim();
 
-    // Guardar en almacenamiento la lista actualizada de películas.
-    const memoria = new Memoria();
-    memoria.escribir("peliculas", peliculas);
+            // Marcar la película como alquilada y aumentar su contador (por si querés conocer cuántas veces se alquiló).
+            pelicula.alquilada = true;
+            pelicula.VecesAlquilada = (pelicula.VecesAlquilada || 0) + 1;
 
-    // Guardar la película en la lista de alquiladas.
-    memoriasAlquiladas.agregarMemoria(pelicula);
+            // Guardar en almacenamiento la lista actualizada de películas.
+            const memoria = new Memoria();
+            memoria.escribir("peliculas", peliculas);
 
-    // Actualizar el botón para que se muestre "Alquilada" y no se pueda volver a presionar.
-    boton.textContent = "Alquilada";
-    boton.disabled = true;
+            // Guardar la película en la lista de alquiladas.
+            memoriasAlquiladas.agregarMemoria(pelicula);
 
-    alert(`Película "${pelicula.titulo}" alquilada exitosamente por ${pelicula.nombreCliente}!`);
-    console.log(`Película alquilada: ${pelicula.titulo}, por: ${pelicula.nombreCliente}`);
-});
+            // Actualizar el botón para que se muestre "Alquilada" y no se pueda volver a presionar.
+            boton.textContent = "Alquilada";
+            boton.disabled = true;
+
+            alert(`Película "${pelicula.titulo}" alquilada exitosamente por ${pelicula.nombreCliente}!`);
+            console.log(`Película alquilada: ${pelicula.titulo}, por: ${pelicula.nombreCliente}`);
+        });
     });
 };
 
@@ -121,11 +112,7 @@ document.getElementById("filtro-genero").addEventListener("change", (event) => {
     filtrarPorGenero(generoSeleccionado);
 });
 
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
+const tusPeliculasAlquiladas = () => {
     const botonTusPeliculas = document.querySelector(".btn");
     const seccionMisPeliculas = document.getElementById("misPeliculas");
     const contenedorAlquiladas = document.getElementById("peliculasAlquiladas");
@@ -133,9 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     botonTusPeliculas.addEventListener("click", (e) => {
         e.preventDefault(); // Evita el comportamiento por defecto del <a>
-        
+
         const memoria = new MemoriasAlquiladas();
         const alquiladas = memoria.obtenerMemorias();
+
+        console.log("Películas alquiladas:", alquiladas);
+
 
         contenedorAlquiladas.innerHTML = "";
         let total = 0;
@@ -145,20 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
             totalPagar.textContent = "";
         } else {
             alquiladas.forEach(pelicula => {
+                console.log(pelicula, "película procesada para alquiladas");
                 total += pelicula.precio;
 
                 contenedorAlquiladas.innerHTML += `
-                    <div >
-                        <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
-
-                        <p style="color:white;"><strong>${pelicula.titulo}</strong></p>
-
-                        <p style="color:white;">Precio: $${pelicula.precio}</p>
-
-                        <p>Alquilada por: ${pelicula.nombreCliente ? pelicula.nombreCliente : "Desconocido"}</p>
-                    </div>
-                `;
-            });
+        <div>
+            <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
+            <p style="color:white;"><strong>${pelicula.titulo}</strong></p>
+            <p style="color:white;">Precio: $${pelicula.precio}</p>
+            <p>Alquilada por: ${pelicula.nombreCliente ? pelicula.nombreCliente : "Desconocido"}</p>
+        </div>
+    `;
+            }); 
 
             totalPagar.textContent = `Total a pagar: $${total}`;
         }
@@ -166,5 +154,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Mostrar la sección y hacer scroll
         seccionMisPeliculas.style.display = "block";
         window.scroll({ top: seccionMisPeliculas.offsetTop, behavior: "smooth" });
+    });
+};
+
+// Espera a que el DOM esté completamente cargado antes de ejecutar el código
+document.addEventListener("DOMContentLoaded", () => {
+    cargarPeliculas().then(peliculas => {
+        console.log("Películas cargadas desde memoria:", peliculas);
+        imprimirPeliculas(peliculas);
+        tusPeliculasAlquiladas();
+    }).catch(error => {
+        console.error("Error al cargar las películas:", error);
     });
 });

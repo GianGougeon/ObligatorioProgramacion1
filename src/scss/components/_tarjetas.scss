@@ -5,6 +5,8 @@
     padding: 3rem 0;
     background-color: variables.$background-color;
     color: aliceblue;
+    padding-bottom: 5rem;
+
     > div {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -42,4 +44,46 @@
         align-items: center;
         text-wrap: nowrap;
     }
+}
+.mis-peliculas {
+    border-top: 1px solid variables.$primary-color;
+    background-color: variables.$background-color;
+    padding-top: 5rem;
+    h3 {
+        text-align: center;
+        color: variables.$primary-color;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    p {
+        text-align: center;
+        color: variables.$primary-color;
+        font-size: 1.2rem;
+    }
+    > p:last-child {
+        color: aliceblue;
+    }
+}
+
+.filtro-genero {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.filtro-genero label {
+    font-weight: bold;
+    color: rgb(255, 254, 254);
+}
+
+.filtro-genero select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: black;
 }
