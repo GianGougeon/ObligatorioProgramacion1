@@ -8,6 +8,7 @@
         <title>datos</title>
     </head>
     <body>
+        <!-- Header -->
         <header>
             <div>
                 <div class="logo">
@@ -25,12 +26,13 @@
                     </li>
                     <li>
                         <a href="./sesion.html">
-<button class="btn">Admin</button>
-     </a>
+                            <button class="btn">Admin</button>
+                        </a>
                     </li>
                 </ul>
             </div>
         </header>
+        <!-- Sección de películas -->
         <section id="peliculas-grid">
             <div id="formulario-pelicula">
                 <div>
@@ -72,19 +74,19 @@
                     </form>
                 </div>
             </div>
-
+            <!-- Estadísticas -->
             <div id="estadisticas">
                 <h2>Estadísticas</h2>
                 <div id="estadisticasPeliculas"></div>
             </div>
-
+            <!-- Modificar película -->
             <div id="formulario-modificar">
                 <h2>Modificar Película</h2>
                 <form id="modificar-form" class="formulario">
                     <div class="campo">
                         <label for="modificar-id">ID de Película:</label>
                         <input type="text" id="modificar-id" required />
-                            </div>
+                    </div>
                     <div class="campo">
                         <label for="modificar-titulo">Título:</label>
                         <input type="text" id="modificar-titulo" />
@@ -119,6 +121,7 @@
                 </form>
             </div>
         </section>
+        <!-- Sección de búsqueda de películas -->
         <section id="listaPeliculas" class="listaPeliculas">
             <div>
                 <input type="text" id="buscar-pelicula" placeholder="Buscar película por título..." />
@@ -126,6 +129,7 @@
             </div>
             <h2>Películas Disponibles</h2>
         </section>
+        <!-- Footer -->
         <footer>
             <div class="logo">
                 <img src="../assets/images/logoheader.png" alt="" />
@@ -136,5 +140,6 @@
                 <p>Términos</p>
                 <p>Contacto</p>
             </div>
+        </footer>
     </body>
 </html>
