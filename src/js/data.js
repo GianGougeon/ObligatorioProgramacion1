@@ -249,7 +249,7 @@ export const data = [{
     precio: 170,
     VecesAlquilada: 0
 },
-// Películas agregadas para culminar la lista
+
 {
     id: 68234,
     titulo: "Coco",

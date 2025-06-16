@@ -1,256 +1,200 @@
-// Módulos: 'peliculas' es la plantilla, 'Memoria' es para guardar, 'data' son los datos iniciales.
+// Módulos: clases y datos necesarios
 import { peliculas } from "./models/peliculas.js";
 import { Memoria } from "./models/memoria.js";
 import { data } from "./data.js";
 
-
-// Mi lista de películas actual. La inicio con una copia de 'data'.
+// Lista principal de películas
 let peliculasArray = [...data];
 
-// Configura lo que pasa al cargar la página.
+// Al cargar la página
 const inicio = () => {
-    // Al enviar el formulario de película, llamo a 'agregarPelicula'.
     document.getElementById("pelicula-form").addEventListener("submit", agregarPelicula);
     document.getElementById("modificar-form").addEventListener("submit", modificarPelicula);
-}
+};
 
-// Añade una nueva película a la lista desde el formulario.
+// Agrega una nueva película
 const agregarPelicula = (event) => {
-    // Evito la recarga de la página.
     event.preventDefault();
-
-    // Genero un ID único.
-    const generarId = () => {
-        return Math.floor(Math.random() * 10000);
-    }
-
-
-
-    // Obtengo los datos del formulario.
     const form = event.target;
-    const id = generarId();
-    const titulo = form.querySelector("#titulo").value;
-    const genero = form.querySelector("#genero").value;
-    const director = form.querySelector("#director").value;
-    const pais = form.querySelector("#pais").value;
-    const anio = parseInt(form.querySelector("#anio").value);
-    const clasificacion = form.querySelector("#clasificacion").value;
-    const alquilada = false;
-    const precio = parseFloat(form.querySelector("#precio").value);
-    const imagenInput = form.querySelector("#imagen");
-    const VecesAlquilada = 0;
 
-    // Valido que los campos importantes estén llenos.
-    if (!titulo || !genero || !director || !pais || isNaN(anio) || !clasificacion || isNaN(precio)) {
-        alert("Por favor, completa todos los campos obligatorios.");
+    const generarId = () => Math.floor(Math.random() * 10000);
+    const id = generarId();
+
+    const nueva = {
+        titulo: form.titulo.value,
+        genero: form.genero.value,
+        director: form.director.value,
+        pais: form.pais.value,
+        anio: parseInt(form.anio.value),
+        clasificacion: form.clasificacion.value,
+        precio: parseFloat(form.precio.value),
+        imagen: "",
+        id,
+        alquilada: false,
+        VecesAlquilada: 0
+    };
+
+    if (Object.values(nueva).some(v => v === "" || v === undefined || Number.isNaN(v))) {
+        alert("Completa todos los campos correctamente.");
         return;
     }
 
-    // Promesa para leer la imagen subida a Data URL.
-    const leerImagenComoDataURL = new Promise((resolve, reject) => {
+    const imagenInput = form.imagen;
+    const reader = new FileReader();
+
+    const cargarImagen = new Promise((resolve, reject) => {
         if (imagenInput.files.length > 0) {
-            const file = imagenInput.files[0];
-            const reader = new FileReader();
-            reader.onload = (e) => resolve(e.target.result);
-            reader.onerror = (error) => {
-                console.error("Error al leer la imagen:", error);
-                reject(""); // Si falla, retorno vacío.
-            };
-            reader.readAsDataURL(file);
+            reader.onload = e => resolve(e.target.result);
+            reader.onerror = () => reject("");
+            reader.readAsDataURL(imagenInput.files[0]);
         } else {
-            resolve(""); // Si no hay imagen, retorno vacío.
+            resolve("");
         }
     });
 
-    // Cuando la imagen se procesa...
-    leerImagenComoDataURL.then((imagenDataUrl) => {
-        // Creo la nueva película con los datos y la URL de la imagen.
-        const nuevaPelicula = new peliculas(
-            id, titulo, genero, director, pais, anio, clasificacion,
-            alquilada, VecesAlquilada, precio, imagenDataUrl
-        );
-
-        // La añado a mi lista y la guardo.
+    cargarImagen.then((imagen) => {
+        nueva.imagen = imagen;
+        const nuevaPelicula = new peliculas({ ...nueva });
         peliculasArray.push(nuevaPelicula);
-        const LaMemoria = new Memoria();
-        LaMemoria.escribir("peliculas", peliculasArray);
 
-        // Actualizo la interfaz y limpio el formulario.
+        new Memoria().escribir("peliculas", peliculasArray);
         listarPeliculas();
         form.reset();
         mostrarEstadisticas();
-    }).catch(errorUrl => {
-        // Si la imagen falla, creo la película igual pero sin imagen.
-        const nuevaPelicula = new peliculas(
-            id, titulo, genero, director, pais, anio, clasificacion,
-            alquilada, VecesAlquilada, precio, errorUrl
-        );
-
-        // La añado, la guardo y actualizo.
+    }).catch(() => {
+        alert("Error al cargar imagen. Se usará una por defecto.");
+        nueva.imagen = "";
+        const nuevaPelicula = new peliculas({ ...nueva });
         peliculasArray.push(nuevaPelicula);
-        const LaMemoria = new Memoria();
-        LaMemoria.escribir("peliculas", peliculasArray);
-
+        new Memoria().escribir("peliculas", peliculasArray);
         listarPeliculas();
         form.reset();
-        alert("Error al cargar la imagen, se usará una imagen por defecto.");
         mostrarEstadisticas();
     });
 };
 
-
-// Muestra todas las películas en una tabla HTML.
+// Lista las películas en tabla
 const listarPeliculas = () => {
-    // Obtengo y limpio el contenedor de la tabla.
-    const listaPeliculas = document.getElementById("listaPeliculas");
-    listaPeliculas.innerHTML = "";
+    const lista = document.getElementById("listaPeliculas");
+    lista.innerHTML = "";
 
-    // Creo la tabla, encabezado y columnas.
     const table = document.createElement("table");
     table.border = "1";
     const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-
     const headers = [
         "ID", "Título", "Género", "Director", "País", "Año",
-        "Clasificación", "Alquilada", "Veces Alquilada", "Precio", "Imagen"
+        "Clasificación", "Alquilada", "Nombre del cliente", "Veces Alquilada", "Precio", "Imagen"
     ];
 
-    headers.forEach(headerText => {
+    const headerRow = document.createElement("tr");
+    headers.forEach(text => {
         const th = document.createElement("th");
-        th.textContent = headerText;
+        th.textContent = text;
         headerRow.appendChild(th);
     });
-
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
-    // Creo el cuerpo de la tabla.
     const tbody = document.createElement("tbody");
-
-    // Por cada película, creo una fila con sus datos e imagen.
-    peliculasArray.forEach((pelicula) => {
+    peliculasArray.forEach(p => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${pelicula.id}</td>
-            <td>${pelicula.titulo}</td>
-            <td>${pelicula.genero}</td>
-            <td>${pelicula.director}</td>
-            <td>${pelicula.pais}</td>
-            <td>${pelicula.anio}</td>
-            <td>${pelicula.clasificacion}</td>
-            <td>${pelicula.alquilada ? "Sí" : "No"}</td>
-            <td>${pelicula.VecesAlquilada}</td>
-            <td>$${pelicula.precio}</td>
-            <td><img src="${pelicula.imagen}" alt="${pelicula.titulo}" width="50"></td>
+            <td>${p.id}</td>
+            <td>${p.titulo}</td>
+            <td>${p.genero}</td>
+            <td>${p.director}</td>
+            <td>${p.pais}</td>
+            <td>${p.anio}</td>
+            <td>${p.clasificacion}</td>
+            <td>${p.alquilada ? "Sí" : "No"}</td>
+            <td>${p.alquilada ? p.nombreCliente || "-" : "-"}</td>
+            <td>${p.VecesAlquilada}</td>
+            <td>$${p.precio}</td>
+            <td><img src="${p.imagen}" width="50" /></td>
         `;
         tbody.appendChild(row);
     });
 
     table.appendChild(tbody);
-    listaPeliculas.appendChild(table); // Inserto la tabla en el HTML.
+    lista.appendChild(table);
+};
 
-    console.log(peliculasArray); // Verifico la lista en consola.
-}
+// Muestra estadísticas básicas
 const mostrarEstadisticas = () => {
-    const contenedor = document.getElementById("estadisticasPeliculas");
-    if (!contenedor) return;
+    const cont = document.getElementById("estadisticasPeliculas");
+    if (!cont) return;
 
-    // Filtrar películas alquiladas
     const alquiladas = peliculasArray.filter(p => p.alquilada);
+    const total = alquiladas.reduce((acc, p) => acc + p.precio, 0);
+    const max = Math.max(...peliculasArray.map(p => p.VecesAlquilada));
+    const populares = peliculasArray.filter(p => p.VecesAlquilada === max && max > 0);
 
-    // Sumar precios
-    const totalPrecio = alquiladas.reduce((acum, p) => acum + p.precio, 0);
-
-    // Encontrar la(s) más alquilada(s)
-    const maxVeces = Math.max(...peliculasArray.map(p => p.VecesAlquilada));
-    const masAlquiladas = peliculasArray.filter(p => p.VecesAlquilada === maxVeces && maxVeces > 0);
-
-    // Armar HTML
-    contenedor.innerHTML = `
-        <p><strong>Total de películas alquiladas:</strong> ${alquiladas.length}</p>
-        <p><strong>Suma total Recaudado del dia:</strong> $${totalPrecio}</p>
-        <p><strong>Película(s) más alquilada(s):</strong></p>
-        <ul>
-            ${masAlquiladas.length ? masAlquiladas.map(p => `<li>${p.titulo} (${p.VecesAlquilada} veces)</li>`).join("")
-            : "<li>Ninguna aún</li>"
-        }
-        </ul>
+    cont.innerHTML = `
+        <p><strong>Alquiladas:</strong> ${alquiladas.length}</p>
+        <p><strong>Total recaudado:</strong> $${total}</p>
+        <p><strong>Más alquiladas:</strong></p>
+        <ul>${populares.length ? populares.map(p => `<li>${p.titulo} (${p.VecesAlquilada})</li>`).join("") : "<li>Ninguna</li>"}</ul>
     `;
 };
 
+// Modifica una película por ID
 const modificarPelicula = (event) => {
     event.preventDefault();
-
-    // Obtiene el ID ingresado en el formulario
     const form = event.target;
-    const id = parseInt(form.querySelector("#modificar-id").value);
-
-    // Busca la película por ID
+    const id = parseInt(form["modificar-id"].value);
     const pelicula = peliculasArray.find(p => p.id === id);
-    if (!pelicula) {
-        alert("Película no encontrada con ese ID.");
-        return;
-    }
+    if (!pelicula) return alert("ID no encontrado.");
 
-    // Obtiene los nuevos valores del formulario
-    const nuevoTitulo = form.querySelector("#modificar-titulo").value;
-    const nuevoGenero = form.querySelector("#modificar-genero").value;
-    const nuevoDirector = form.querySelector("#modificar-director").value;
-    const nuevoPais = form.querySelector("#modificar-pais").value;
-    const nuevoAnio = form.querySelector("#modificar-anio").value;
-    const nuevoClasificacion = form.querySelector("#modificar-clasificacion").value;
-    const nuevoPrecio = form.querySelector("#modificar-precio").value;
+    ["titulo", "genero", "director", "pais", "anio", "clasificacion", "precio"].forEach(campo => {
+        const valor = form[`modificar-${campo}`].value;
+        if (valor) pelicula[campo] = campo === "anio" ? parseInt(valor) : campo === "precio" ? parseFloat(valor) : valor;
+    });
 
-    // Actualiza solo los campos que no estén vacíos
-    if (nuevoTitulo) pelicula.titulo = nuevoTitulo;
-    if (nuevoGenero) pelicula.genero = nuevoGenero;
-    if (nuevoDirector) pelicula.director = nuevoDirector;
-    if (nuevoPais) pelicula.pais = nuevoPais;
-    if (nuevoAnio) pelicula.anio = parseInt(nuevoAnio) || pelicula.anio;
-    if (nuevoClasificacion) pelicula.clasificacion = nuevoClasificacion;
-    if (nuevoPrecio) pelicula.precio = parseFloat(nuevoPrecio) || pelicula.precio;
-
-    // Guarda los cambios en memoria
-    const LaMemoria = new Memoria();
-    LaMemoria.escribir("peliculas", peliculasArray);
-
+    new Memoria().escribir("peliculas", peliculasArray);
     listarPeliculas();
     mostrarEstadisticas();
     form.reset();
-    alert("Película modificada correctamente.");
+    alert("Película modificada.");
 };
 
-// Carga las películas guardadas al iniciar la app.
+// Elimina película por ID
+const eliminarPeliculaDesdeFormulario = () => {
+    const input = document.querySelector("#modificar-id");
+    const id = parseInt(input.value);
+    if (!id || isNaN(id)) return alert("ID inválido.");
+
+    const pelicula = peliculasArray.find(p => p.id === id);
+    if (!pelicula) return alert("No existe película con ese ID.");
+
+    if (confirm(`¿Eliminar "${pelicula.titulo}"?`)) {
+        peliculasArray = peliculasArray.filter(p => p.id !== id);
+        new Memoria().escribir("peliculas", peliculasArray);
+        listarPeliculas();
+        mostrarEstadisticas();
+        document.querySelector("#modificar-form").reset();
+        alert("Eliminada correctamente.");
+    }
+};
+
+// Carga datos guardados o iniciales
 const cargarPeliculas = () => {
-    const LaMemoria = new Memoria();
-    const peliculasGuardadas = LaMemoria.leer("peliculas");
-
-    // Si hay guardadas, las uso; si no, uso los datos iniciales.
-    if (peliculasGuardadas) {
-        peliculasArray = peliculasGuardadas;
-    } else {
-        peliculasArray = [...data];
-    }
+    const guardadas = new Memoria().leer("peliculas");
+    peliculasArray = guardadas || [...data];
     listarPeliculas();
-    mostrarEstadisticas(); // Muestro la lista cargada.
+    mostrarEstadisticas();
 };
 
-// Verifica si el usuario está logueado, sino esta, no deja entra a datos.html
+// Verifica si hay usuario logueado
 const checkUser = () => {
-    const LaMemoria = new Memoria();
-    const usuario = LaMemoria.leer("usuario");
-
-    if (!usuario) {
-        // Si no hay usuario, redirigir a la página de inicio de sesión
-        window.location.href = "./sesion.html";
-    }
+    const usuario = new Memoria().leer("usuario");
+    if (!usuario) window.location.href = "./sesion.html";
 };
 
-// Cuando el HTML esté listo, ejecuto mis funciones de inicio y carga.
+// Al cargar todo
 document.addEventListener("DOMContentLoaded", () => {
     inicio();
     cargarPeliculas();
-    mostrarEstadisticas();
     checkUser();
 });
+
+document.querySelector("#eliminar-pelicula").addEventListener("click", eliminarPeliculaDesdeFormulario);
