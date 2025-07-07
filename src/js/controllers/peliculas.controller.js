@@ -139,26 +139,26 @@ const mostrarEstadisticasDOM = (fechaSeleccionada = null) => {
     const { total } = obtenerEstadisticas();
 
     // 1. Agrupar fechas únicas (solo parte de la fecha, sin hora)
-    const fechasUnicas = [...new Set(total
-        .map(p => p.fechaAlquiler?.fecha?.split("T")[0])
-        .filter(f => f)
-    )].sort((a, b) => new Date(b) - new Date(a)); // orden descendente
+    const fechasUnicas = [...new Set(
+        total.map(p => p.fechaAlquiler?.fecha).filter(f => f))]
 
     // 2. Filtrar por fecha si hay una seleccionada
     const filtrado = fechaSeleccionada
-        ? total.filter(p => p.fechaAlquiler?.fecha?.startsWith(fechaSeleccionada)) // startsWith para comparar solo la fecha
+        ? total.filter(p => p.fechaAlquiler?.fecha === fechaSeleccionada)
         : total;
 
     // 3. Agrupar por cliente
     const agrupadoPorCliente = {};
     filtrado.forEach(p => {
-        if (p.nombreCliente === "admin") return;
+
+
         if (!agrupadoPorCliente[p.nombreCliente]) {
             agrupadoPorCliente[p.nombreCliente] = [];
         }
         agrupadoPorCliente[p.nombreCliente].push(p);
     });
     const clientes = Object.entries(agrupadoPorCliente);
+    console.log(clientes);
 
     // 4. HTML
     cont.innerHTML = `

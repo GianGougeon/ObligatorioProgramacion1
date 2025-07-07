@@ -7,8 +7,6 @@ import {
     alquilarPelicula,
     obtenerPeliculasPorGenero,
 } from "../services/catalogo.service.js";
-
-
 // Devuelve el nombre del cliente almacenado en memoria
 const cargarNombreCliente = () => {
     const usuarioMemoria = new UsuarioMemoria();
@@ -84,8 +82,9 @@ const obtenerGenerosUnicos = () => {
             });
         }
     });
-
     // Convertir a array y agregar "Todos" al principio
+    console.log(["Todos", ...Array.from(generosSet)]);
+
     return ["Todos", ...Array.from(generosSet)];
 };
 //  Inicia el catálogo de películas y genera los botones de género
@@ -134,7 +133,9 @@ const peliculasBuscador = () => {
             tarjetasPeliculas.innerHTML = `<div class = "not" <p >No se encontraron películas.</p></div>`;
             document.getElementById("buscador").value = "";
         } else {
-            imprimirPeliculas(filtradas);
+            const peliculasunicas = filtradas.filter((pelicula, index, arr) =>
+                index === arr.findIndex(p => p.id === pelicula.id));
+            imprimirPeliculas(peliculasunicas);
             document.getElementById("buscador").value = ""
         }
     });
