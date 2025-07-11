@@ -22,20 +22,38 @@ const agregarPelicula = (nuevaPelicula) => {
 };
 
 const modificarPeliculaPorId = (id, campos) => {
-    const pelicula = peliculasArray.find(p => p.id === id);
-    if (!pelicula) return false;
+    // Buscar la película por su ID
+    const peliculaEncontrada = peliculasArray.find(pelicula => pelicula.id === id);
+    if (!peliculaEncontrada) {
+        return false; // No se encontró la película
+    }
 
-    Object.keys(campos).forEach(key => {
-        if (campos[key] !== undefined && campos[key] !== "") {
-            pelicula[key] = (key === "anio") ? parseInt(campos[key]) :
-                (key === "precio") ? parseFloat(campos[key]) :
-                    campos[key];
+    // Recorrer cada campo a modificar
+    for (const campo in campos) {
+        const valor = campos[campo];
+
+        // Ignorar valores vacíos o indefinidos
+        if (valor === undefined || valor === "") continue;
+
+        // Asignar valor con tipo correcto según el campo
+        switch (campo) {
+            case "anio":
+                peliculaEncontrada[campo] = parseInt(valor);
+                break;
+            case "precio":
+                peliculaEncontrada[campo] = parseFloat(valor);
+                break;
+            default:
+                peliculaEncontrada[campo] = valor;
+                break;
         }
-    });
+    }
 
+    // Guardar cambios
     guardarPeliculas();
     return true;
 };
+
 
 const eliminarPelicula = (id) => {
     const originalLength = peliculasArray.length;

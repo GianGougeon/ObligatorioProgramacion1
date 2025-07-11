@@ -5,23 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./../css/styles.css" />
         <script type="module" src="./../js/app-session.js" defer></script>
-        <title>Inicio Sesion</title>
+        <title>Inicio de Sesión</title>
     </head>
     <body class="sesion">
-        <!-- Formulario de inicio de sesión -->
-        <section>
+        <section id="contenedorFormulario">
             <img src="./../assets/images/logoheader.png" alt="Logo" />
-            <form class="formulario" id="loginForm">
-                <div>
-                    <label for="username">Usuario:</label>
-                    <input type="text" id="username" required />
-                </div>
-                <div>
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" required />
-                </div>
-                <button type="submit" class="btn">Iniciar Sesión</button>
-            </form>
+            <!-- Contenedor donde se inyectarán los formularios -->
+            <div id="formularioContainer"></div>
+            <!-- Botones para cambiar entre login y registro -->
+            <div class="switch-buttons">
+                <button id="btnLogin" class="btn">Iniciar Sesión</button>
+                <button id="btnRegistro" class="btn">Registro</button>
+            </div>
         </section>
     </body>
 </html>
