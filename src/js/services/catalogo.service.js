@@ -40,6 +40,7 @@ const obtenerPeliculasPorGenero = (genero) => {
     const peliculas = memoria.leer("peliculas") || [];
     if (genero === "Todos") return peliculas;
     return peliculas.filter(p => p.genero.toLowerCase().includes(genero.toLowerCase()));
+    
 };
 
 const obtenerPeliculasAlquiladas = () => {
