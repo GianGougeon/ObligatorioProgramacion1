@@ -1,4 +1,5 @@
 // controllers/catalogo.controller.js
+import { Memoria } from "../models/memoria.js";
 import {
     cargarPeliculas,
     alquilarPelicula,
@@ -51,10 +52,10 @@ const imprimirPeliculas = (peliculas) => {
     });
 };
 
-const filtrarPorGeneroDOM = (genero) => {
-    const peliculas = obtenerPeliculasPorGenero(genero);
-    imprimirPeliculas(peliculas);
-};
+// const filtrarPorGeneroDOM = (genero) => {
+//     const peliculas = obtenerPeliculasPorGenero(genero);
+//     imprimirPeliculas(peliculas);
+// };
 
 const mostrarPeliculasAlquiladasDOM = () => {
     const seccion = document.getElementById("misPeliculas");
@@ -73,29 +74,72 @@ const mostrarPeliculasAlquiladasDOM = () => {
         alquiladas.forEach(pelicula => {
             total += pelicula.precio;
             contenedor.innerHTML += `
-                <div>
-                    <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
-                    <p style="color:white;"><strong>${pelicula.titulo}</strong></p>
-                    <p style="color:white;">Precio: $${pelicula.precio}</p>
-                    <p>Alquilada por: ${pelicula.nombreCliente || "Desconocido"}</p>
-                </div>
+            <div>
+            <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
+            <p style="color:white;"><strong>${pelicula.titulo}</strong></p>
+            <p style="color:white;">Precio: $${pelicula.precio}</p>
+            <p>Alquilada por: ${pelicula.nombreCliente || "Desconocido"}</p>
+            </div>
             `;
         });
-
+        
         totalPagar.textContent = `Total a pagar: $${total}`;
     }
-
+    
     seccion.style.display = "block";
     window.scroll({ top: seccion.offsetTop, behavior: "smooth" });
 };
 
-const iniciarCatalogo = () => {
-    const selector = document.getElementById("filtro-genero");
-    selector.addEventListener("change", (e) => {
-        filtrarPorGeneroDOM(e.target.value);
+
+
+
+const obtenerGenerosUnicos = () => {
+    const memoria = new Memoria();
+    const peliculas = memoria.leer("peliculas") || [];
+
+    // Obtener todos los géneros sin repetir
+    const generosSet = new Set();
+    peliculas.forEach(p => {
+        if (p.genero) {  p.genero.split(",").forEach(g => {
+                generosSet.add(g.trim());
+            });
+        }
     });
 
-    const botonTusPeliculas = document.querySelector(".btn");
+    // Convertir a array y agregar "Todos" al principio
+    return ["Todos", ...Array.from(generosSet)];
+};
+
+
+
+
+
+
+const iniciarCatalogo = () => {
+    const contenedorBotones = document.getElementById("botones-genero");
+
+    // Limpiar botones por si se actualiza más adelante
+    contenedorBotones.innerHTML = "";
+
+    const generos = obtenerGenerosUnicos(); // ← esto se actualiza dinámicamente
+
+    generos.forEach(genero => {
+        const boton = document.createElement("button");
+        boton.textContent = genero;
+        boton.className = "btn";
+
+        boton.addEventListener("click", () => {
+            document.querySelectorAll("#botones-genero button").forEach(b => b.classList.remove("activo"));
+            boton.classList.add("activo");
+
+            const peliculasFiltradas = obtenerPeliculasPorGenero(genero);
+            imprimirPeliculas(peliculasFiltradas);
+        });
+
+        contenedorBotones.appendChild(boton);
+    });
+
+    const botonTusPeliculas = document.querySelector(".btn-tus-peliculas");
     botonTusPeliculas?.addEventListener("click", (e) => {
         e.preventDefault();
         mostrarPeliculasAlquiladasDOM();
@@ -103,6 +147,9 @@ const iniciarCatalogo = () => {
 
     const peliculas = cargarPeliculas();
     imprimirPeliculas(peliculas);
+    console.log(peliculas)
 };
+
+
 
 export { iniciarCatalogo };

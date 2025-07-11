@@ -65,25 +65,12 @@
     }
 }
 
-.filtro-genero {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-    background-color: transparent;
-    flex-direction: row;
-    justify-content: center;
-    align-content: flex-start;
-    align-items: center;
+.bloque-generos {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+   border-bottom: 1px solid #222;
 }
 
-.filtro-genero label {
-    font-weight: bold;
-    color: rgb(255, 254, 254);
-}
-
-.filtro-genero select {
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: black;
-}
