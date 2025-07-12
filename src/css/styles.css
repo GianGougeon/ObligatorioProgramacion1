@@ -272,24 +272,12 @@ header .header-login > li a {
 }
 
 .buscador {
-  display: flex;
-  justify-content: center;
   text-align: center;
   align-items: center;
-  padding: 2px;
-  background-color: #201f21;
+  padding: 5px;
+  background-color: #c9b7db;
+  width: 300px;
 }
-.buscador > input {
-  width: 150px;
-  padding: 0.3rem;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  border-radius: 2px;
-}
-
 .tarjetas {
   display: flex;
   padding: 3rem 0;
@@ -360,6 +348,20 @@ header .header-login > li a {
   align-items: center;
   margin-top: 20px;
   border-bottom: 1px solid #222;
+}
+
+.not {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+}
+.not p {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
 }
 
 .btnbutton {

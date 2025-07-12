@@ -6,7 +6,8 @@ import {
     reiniciarPeliculas,
     leerPeliculas,
     generarId,
-    obtenerEstadisticas
+    obtenerEstadisticas,
+    peliculasBuscador
 } from "../services/peliculas.service.js";
 
 import { peliculas } from "../models/peliculas.js";
@@ -169,6 +170,10 @@ const cargarPeliculasDOM = () => {
     listarPeliculasDOM();
     mostrarEstadisticasDOM();
 };
+
+
+
+
 
 export {
     agregarPeliculaDOM,

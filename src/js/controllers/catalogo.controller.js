@@ -7,6 +7,14 @@ import {
     obtenerPeliculasAlquiladas
 } from "../services/catalogo.service.js";
 
+const memoria = new Memoria();
+let peliculas = memoria.leer("peliculas");
+
+if (!peliculas || peliculas.length === 0) {
+  peliculas = cargarPeliculas(); // ← tus películas predefinidas
+  memoria.escribir("peliculas", peliculas);
+}
+
 const imprimirPeliculas = (peliculas) => {
     const tarjetasPeliculas = document.getElementById("tarjetasPeliculas");
     if (!tarjetasPeliculas) return;
@@ -82,10 +90,10 @@ const mostrarPeliculasAlquiladasDOM = () => {
             </div>
             `;
         });
-        
+
         totalPagar.textContent = `Total a pagar: $${total}`;
     }
-    
+
     seccion.style.display = "block";
     window.scroll({ top: seccion.offsetTop, behavior: "smooth" });
 };
@@ -100,7 +108,8 @@ const obtenerGenerosUnicos = () => {
     // Obtener todos los géneros sin repetir
     const generosSet = new Set();
     peliculas.forEach(p => {
-        if (p.genero) {  p.genero.split(",").forEach(g => {
+        if (p.genero) {
+            p.genero.split(",").forEach(g => {
                 generosSet.add(g.trim());
             });
         }
@@ -116,6 +125,7 @@ const obtenerGenerosUnicos = () => {
 
 
 const iniciarCatalogo = () => {
+    
     const contenedorBotones = document.getElementById("botones-genero");
 
     // Limpiar botones por si se actualiza más adelante
@@ -148,8 +158,49 @@ const iniciarCatalogo = () => {
     const peliculas = cargarPeliculas();
     imprimirPeliculas(peliculas);
     console.log(peliculas)
+
+
+
+    
 };
 
+
+
+
+const peliculasBuscador = () => {
+    const formBusqueda = document.getElementById("form-busqueda");
+    const inputBuscador = document.getElementById("buscador");
+    const memoria = new Memoria();
+
+    formBusqueda.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const texto = inputBuscador.value.toLowerCase();
+        const peliculasGuardadas = memoria.leer("peliculas") || [];
+
+        peliculasGuardadas.forEach(p => console.log("Título:", p.titulo));
+        const filtradas = peliculasGuardadas.filter(pelicula =>
+            pelicula.titulo.toLowerCase().includes(texto)
+        );
+
+        if (filtradas.length === 0) {
+            const tarjetasPeliculas = document.getElementById("tarjetasPeliculas");
+            tarjetasPeliculas.innerHTML = `<div class = "not" <p >No se encontraron películas.</p></div>`;
+            document.getElementById("buscador").value = "";
+        } else {
+            imprimirPeliculas(filtradas);
+            document.getElementById("buscador").value = ""
+        }
+    });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const memoria = new Memoria();
+    const peliculasGuardadas = memoria.leer("peliculas") || [];
+
+    imprimirPeliculas(peliculasGuardadas); // Mostrar todas al inicio
+    peliculasBuscador(); // Activar buscador
+});
 
 
 export { iniciarCatalogo };

@@ -81,6 +81,11 @@ const obtenerEstadisticas = () => {
     return { alquiladas, total, populares };
 };
 
+
+
+
+
+
 export {
     getPeliculas,
     agregarPelicula,
@@ -90,4 +95,5 @@ export {
     leerPeliculas,
     generarId,
     obtenerEstadisticas
+  
 };

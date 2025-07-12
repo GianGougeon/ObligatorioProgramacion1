@@ -47,10 +47,12 @@ const obtenerPeliculasAlquiladas = () => {
     return new MemoriasAlquiladas().obtenerMemorias() || [];
 };
 
+
 export {
     cargarPeliculas,
     guardarPeliculas,
     alquilarPelicula,
     obtenerPeliculasPorGenero,
-    obtenerPeliculasAlquiladas
+    obtenerPeliculasAlquiladas,
+    
 };
