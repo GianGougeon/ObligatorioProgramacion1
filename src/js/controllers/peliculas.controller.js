@@ -7,7 +7,6 @@ import {
     leerPeliculas,
     generarId,
     obtenerEstadisticas,
-    peliculasBuscador
 } from "../services/peliculas.service.js";
 
 import { peliculas } from "../models/peliculas.js";

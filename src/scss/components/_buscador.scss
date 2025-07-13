@@ -1,11 +1,12 @@
 .buscador {
-        text-align: center;
+    text-align: center;
     align-items: center;
     padding: 5px;
     background-color: #c9b7db;
     width: 300px;
-    input {
-     
-        
-    }
+    margin-left: -600px;
+     flex: 1;
+    min-width: 150px;
+    max-width: 300px;
+
 }

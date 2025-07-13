@@ -104,7 +104,6 @@ section {
 
 body {
   line-height: 1;
-  background-color: #201f21;
 }
 
 ol,
@@ -145,6 +144,8 @@ table {
 }
 
 header {
+  flex-direction: column;
+  align-items: stretch;
   background-color: #201f21;
   width: 100%;
   display: flex;
@@ -277,7 +278,12 @@ header .header-login > li a {
   padding: 5px;
   background-color: #c9b7db;
   width: 300px;
+  margin-left: -600px;
+  flex: 1;
+  min-width: 150px;
+  max-width: 300px;
 }
+
 .tarjetas {
   display: flex;
   padding: 3rem 0;
@@ -346,8 +352,8 @@ header .header-login > li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
   border-bottom: 1px solid #222;
+  background-color: #201f21;
 }
 
 .not {

@@ -30,12 +30,12 @@ const renderRegistro = () => {
     contenedor.innerHTML = `
         <form class="formulario" id="registroForm">
             <div>
-                <label for="newUsername">Nuevo Usuario:</label>
+                <label for="newUsername">Nombre de Usuario:</label>
                 <input type="text" id="newUsername" required />
             </div>
             <div>
-                <label for="newPassword">Contraseña:</label>
-                <input type="password" id="newPassword" required />
+                <label for="newPassword">Apellido:</label>
+                <input type="text" id="newPassword" required />
             </div>
             <button type="submit" class="btn">Registrarse</button>
         </form>

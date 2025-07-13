@@ -27,7 +27,7 @@ const manejarLogin = () => {
 
             // Caso especial: si es admin entra a datos
             if (username === "user" && password === "user") {
-                usuarioMemoria.guardarUsuario({ nombre: "user", password: "user" });
+                usuarioMemoria.escribirUsuario({ nombre: "user", password: "user" });
                 window.location.href = "./datos.html";
                 return;
             }
@@ -41,7 +41,7 @@ const manejarLogin = () => {
             // Verifica si al menos el nombre coincide (usuario registrado)
             const usuario = usuarioMemoria.leerUsuario();
             if (usuario && usuario.nombre === username) {
-                usuarioMemoria.guardarUsuario({ nombre: username, password }); // opcional
+                usuarioMemoria.escribirUsuario({ nombre: username, password }); // opcional
                 window.location.href = "./../../../index.html";
             } else {
                 alert("Usuario o contraseña incorrectos");
