@@ -104,7 +104,6 @@ section {
 
 body {
   line-height: 1;
-  background-color: #201f21;
 }
 
 ol,
@@ -152,7 +151,6 @@ header {
   justify-content: space-between;
   text-transform: uppercase;
   padding: 1rem 0;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 header > div {
   display: flex;
@@ -525,26 +523,34 @@ footer > div:nth-child(3) > p:hover {
 .listaPeliculas {
   margin-bottom: 4rem;
 }
-.listaPeliculas tbody {
+.listaPeliculas table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  font-family: "Segoe UI", sans-serif;
 }
-.listaPeliculas tbody th,
-.listaPeliculas tbody td {
+.listaPeliculas table th,
+.listaPeliculas table td {
   border: 1px solid #ccc;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem;
   text-align: center;
+  vertical-align: middle;
 }
-.listaPeliculas tbody th {
-  background-color: #f5f5f5;
+.listaPeliculas table thead {
+  background-color: #333;
+  color: white;
   font-weight: bold;
 }
-.listaPeliculas tbody tr:nth-child(even) {
-  background-color: #fafafa;
+.listaPeliculas table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
-.listaPeliculas tbody tr:hover {
-  background-color: #e6f7ff;
+.listaPeliculas table tbody tr:hover {
+  background-color: #e1f0ff;
+}
+.listaPeliculas table img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
 }
 
 #peliculas-grid {
@@ -707,6 +713,62 @@ footer > div:nth-child(3) > p:hover {
   background-color: #004085;
 }
 
+.tabla-alquiladas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #1e1e2f;
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.tabla-alquiladas th, .tabla-alquiladas td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  vertical-align: top;
+}
+.tabla-alquiladas thead {
+  background-color: #2c2c3f;
+}
+.tabla-alquiladas thead th {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tabla-alquiladas tr:hover {
+  background-color: #2a2a3d;
+}
+
+.lista-peliculas {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  color: #ccc;
+}
+.lista-peliculas li {
+  margin-bottom: 6px;
+}
+.lista-peliculas li .fecha-alquiler {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-left: 6px;
+  font-style: italic;
+}
+
+#totalPagar {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.mensaje-vacio {
+  color: white;
+  font-style: italic;
+  padding: 10px;
+}
+
 .nosotros-section {
   background-color: #201f21;
   color: #fff;
@@ -748,6 +810,27 @@ footer > div:nth-child(3) > p:hover {
 }
 .nosotros-section > div > p em {
   font-style: italic;
+}
+
+.perfil-section {
+  color: #fff;
+  background-color: #201f21;
+  height: 100vh;
+}
+.perfil-section h2 {
+  text-align: center;
+  padding-top: 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 2.5rem;
+  border-bottom: 2cap solid #444;
+}
+
+.mensaje-vacio {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-top: 5rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

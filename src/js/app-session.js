@@ -35,7 +35,7 @@ const renderRegistro = () => {
             </div>
             <div>
                 <label for="newPassword">Contraseña:</label>
-                <input type="password" id="newPassword" required />
+                <input type="text" id="newPassword" required />
             </div>
             <button type="submit" class="btn">Registrarse</button>
         </form>
@@ -46,11 +46,10 @@ const renderRegistro = () => {
 // Inicialización al cargar el DOM
 document.addEventListener("DOMContentLoaded", () => {
     renderLogin(); // Muestra login por defecto
-
     // Listeners para cambiar entre formularios
     btnLogin.addEventListener("click", renderLogin);
     btnRegistro.addEventListener("click", renderRegistro);
-
+    // Manejar el logout
     // Chequea si el usuario está autenticado
     checkUser();
 });

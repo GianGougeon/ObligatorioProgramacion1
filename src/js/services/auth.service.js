@@ -7,25 +7,16 @@ const usuarioMemoria = new UsuarioMemoria();
 // Chequea si el usuario está autenticado
 export const checkUser = () => {
     const usuario = new Memoria().leer("usuario");
-
-    // Si no hay usuario, redirige a sesion.html
-    if (!usuario) {
-        console.log("No hay usuario, redirigiendo a sesion.html");
-        return;
-    }
-
-    const admin = usuario.nombre !== "user" || usuario.password !== "user";
+    const admin = usuario.nombre !== "admin" || usuario.password !== "admin";
 
     if (admin) {
         console.log("Usuario no es admin, redirigiendo a index.html");
-        window.location.href = "./../../../index.html";
+        window.location.href = "./perfil.html";
     } else {
         console.log("Usuario es admin, redirigiendo a datos.html");
         window.location.href = "./datos.html";
     }
 }
-
-
 
 // Autenticación para manejar el login
 const login = (username, password) => {

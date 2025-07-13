@@ -1,8 +1,11 @@
 import { isAuthenticated } from '../services/auth.service.js';
+import { UsuarioMemoria } from "../models/usuario.js";
 
 const isAuthenticatedComponent = () => {
-    if (!isAuthenticated()) {
-        console.log("No hay usuario autenticado, redirigiendo a index.html");
+    const usuarioMemoria = new UsuarioMemoria();
+    const admin = usuarioMemoria.leerUsuario();
+    const isAdmin = admin && (admin.nombre === "admin" || admin.password === "admin");
+    if (!isAdmin) {
         window.location.href = "./../../index.html";
     }
 }

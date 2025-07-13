@@ -4,8 +4,6 @@ import { data } from "../data/data.js";
 let peliculasArray = [...data];
 
 const getPeliculas = () => peliculasArray;
-console.log("Películas cargadas desde el servicio:", peliculasArray);
-
 
 const guardarPeliculas = () => {
     new Memoria().escribir("peliculas", peliculasArray);

@@ -11,6 +11,67 @@ import {
 
 import { peliculas } from "../models/peliculas.js";
 
+const botonReiniciarAlquilerPelicula = (id) => {
+    const peliculas = getPeliculas();
+    const pelicula = peliculas.find(p => p.id === id);
+    if (!pelicula) return;
+    pelicula.alquilada = false;
+    pelicula.nombreCliente = "";
+    pelicula.fechaAlquiler = "";
+    pelicula.VecesAlquilada = 0;
+    agregarPelicula(pelicula); // Actualiza la película en el almacenamiento
+    listarPeliculasDOM(); // Actualiza la lista en el DOM
+    mostrarEstadisticasDOM(); // Actualiza las estadísticas
+    alert("Alquiler reiniciado correctamente.");
+};
+const listarPeliculasDOM = () => {
+    const lista = document.getElementById("listaPeliculas");
+    lista.innerHTML = "";
+    const peliculas = getPeliculas();
+    const table = document.createElement("table");
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    ["ID", "Título", "Género", "Director", "País", "Año", "Clasificación", "Alquilada", "Nombre del cliente", "Fecha", "Veces Alquilada", "Precio", "Imagen", "Reiniciar alquiler"]
+        .forEach(text => {
+            const th = document.createElement("th");
+            th.textContent = text;
+            headerRow.appendChild(th);
+        });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    peliculas.forEach(p => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${p.id}</td>
+            <td>${p.titulo}</td>
+            <td>${p.genero}</td>
+            <td>${p.director}</td>
+            <td>${p.pais}</td>
+            <td>${p.anio}</td>
+            <td>${p.clasificacion}</td>
+            <td>${p.alquilada ? "Sí" : "No"}</td>
+            <td>${p.alquilada ? p.nombreCliente || "" : ""}</td>
+            <td>${p.alquilada ? `<span> ${p.fechaAlquiler.fecha} </span><hr><span> ${p.fechaAlquiler.hora} </span>` : ""} </td>
+            <td>${p.VecesAlquilada}</td>
+            <td>$${p.precio}</td>
+            <td><img src="${p.imagen}" width="50" /></td>
+            <td><button class="btn" id="${p.id}">Reinicio</button></td>
+        `;
+        const btnReiniciar = row.querySelector("button");
+        btnReiniciar.addEventListener("click", (event) => {
+            event.preventDefault();
+            const id = parseInt(event.target.id);
+            botonReiniciarAlquilerPelicula(id);
+        });
+
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    lista.appendChild(table);
+};
+
 const agregarPeliculaDOM = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -55,50 +116,7 @@ const agregarPeliculaDOM = (event) => {
     });
 };
 
-const listarPeliculasDOM = () => {
-    const lista = document.getElementById("listaPeliculas");
-    lista.innerHTML = "";
 
-    const peliculas = getPeliculas();
-
-    const table = document.createElement("table");
-    table.border = "1";
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-
-    ["ID", "Título", "Género", "Director", "País", "Año", "Clasificación", "Alquilada", "Nombre del cliente", "Veces Alquilada", "Precio", "Imagen"]
-        .forEach(text => {
-            const th = document.createElement("th");
-            th.textContent = text;
-            headerRow.appendChild(th);
-        });
-
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-    const tbody = document.createElement("tbody");
-
-    peliculas.forEach(p => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${p.id}</td>
-            <td>${p.titulo}</td>
-            <td>${p.genero}</td>
-            <td>${p.director}</td>
-            <td>${p.pais}</td>
-            <td>${p.anio}</td>
-            <td>${p.clasificacion}</td>
-            <td>${p.alquilada ? "Sí" : "No"}</td>
-            <td>${p.alquilada ? p.nombreCliente || "-" : "-"}</td>
-            <td>${p.VecesAlquilada}</td>
-            <td>$${p.precio}</td>
-            <td><img src="${p.imagen}" width="50" /></td>
-        `;
-        tbody.appendChild(row);
-    });
-
-    table.appendChild(tbody);
-    lista.appendChild(table);
-};
 
 const mostrarEstadisticasDOM = () => {
     const cont = document.getElementById("estadisticasPeliculas");

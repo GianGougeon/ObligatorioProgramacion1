@@ -19,8 +19,8 @@ Aplicación web creada como parte del curso de Programación 1. Permite la gesti
 
 Para acceder a la sección de administración se requiere autenticación.
 
--   **Usuario:** `user`
--   **Contraseña:** `user` _(verificada dentro del formulario, típicamente hardcodeada en JS)_
+-   **Usuario:** `admin`
+-   **Contraseña:** `admin` _(verificada dentro del formulario, típicamente hardcodeada en JS)_
 
 Una vez autenticado, se habilita el acceso a los formularios de gestión de películas.
 

@@ -4,49 +4,37 @@ import { UsuarioMemoria } from "../models/usuario.js";
 
 const usuarioMemoria = new UsuarioMemoria();
 
-// Funcion crear un usuario admin en memoria
-export const inicializarAdminPorDefecto = () => {
-    const usuario = usuarioMemoria.leerUsuario();
-    if (!usuario) {
-        usuarioMemoria.escribirUsuario({ nombre: "admin", password: "admin" });
-        console.log("Usuario admin creado por defecto.");
-    }
-};
-
 // Funcion para manejar el login
 const manejarLogin = () => {
     const form = document.getElementById("loginForm");
     if (!form) return;
-
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // captura los valores de los campos de usuario y contraseña
         try {
             const username = document.getElementById("username").value.trim();
             const password = document.getElementById("password").value.trim();
 
-            // Caso especial: si es admin entra a datos
-            if (username === "user" && password === "user") {
-                usuarioMemoria.guardarUsuario({ nombre: "user", password: "user" });
+            // Validación de campos vacíos
+            if (!username || !password) {
+                alert("Por favor, complete ambos campos.");
+                return;
+            }
+
+            // Validación especial para admin
+            if (username === "admin" && password === "admin") {
+                usuarioMemoria.escribirUsuario({ nombre: "admin", password: "admin" });
                 window.location.href = "./datos.html";
                 return;
             }
 
-            // Verifica si el login es válido
+            // Validación con función login (debes definirla tú)
             if (login(username, password)) {
                 window.location.href = "./datos.html";
                 return;
             }
 
-            // Verifica si al menos el nombre coincide (usuario registrado)
-            const usuario = usuarioMemoria.leerUsuario();
-            if (usuario && usuario.nombre === username) {
-                usuarioMemoria.guardarUsuario({ nombre: username, password }); // opcional
-                window.location.href = "./../../../index.html";
-            } else {
-                alert("Usuario o contraseña incorrectos");
-                form.reset();
-            }
+            // Si no es válido
+            alert("Usuario o contraseña incorrectos.");
         } catch (error) {
             console.error("Error durante el proceso de login:", error);
             alert("Ocurrió un error inesperado durante el login. Por favor, intenta de nuevo.");
@@ -54,28 +42,42 @@ const manejarLogin = () => {
     });
 };
 
+
 const manejarRegistro = () => {
     const form = document.getElementById("registroForm");
     if (!form) {
         console.error("Formulario de registro no encontrado");
         return;
-    };
+    }
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const username = document.getElementById("newUsername").value;
-        const password = document.getElementById("newPassword").value;
+        const username = document.getElementById("newUsername").value.trim();
+        const password = document.getElementById("newPassword").value.trim();
+
+        // Validar campos vacíos
+        if (!username || !password) {
+            alert("Por favor, complete todos los campos");
+            return;
+        }
+
+        // Bloquear intento de registrar "admin"
+        if (username.toLowerCase() === "admin") {
+            alert("El nombre de usuario 'admin' está reservado y no puede ser registrado.");
+            document.getElementById("newUsername").value = "";
+            document.getElementById("newPassword").value = "";
+            return;
+        }
 
         if (register(username, password)) {
             alert("Registro exitoso");
             checkUser();
         } else {
-            alert("Por favor, complete todos los campos");
+            alert("Error al registrar. Intente con otro nombre de usuario.");
             document.getElementById("newUsername").value = "";
             document.getElementById("newPassword").value = "";
         }
     });
-
-}
+};
 
 export { manejarLogin, manejarRegistro };

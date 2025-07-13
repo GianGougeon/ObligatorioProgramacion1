@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="module" src="./../js/app.js" defer></script>
+        <script type="module" src="./../js/app-perfil.js"></script>
+        <script type="module" src="./../js/components/checkUser.component.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="../css/styles.css" />
+
+        <title>Perfil</title>
+    </head>
+    <body>
+        <header>
+            <div>
+                <div class="logo">
+                    <img src="./../assets/images/logoheader.png" alt="logo" />
+                </div>
+                <ul>
+                    <li>
+                        <a href="./../../index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./peliculas.html">Películas</a>
+                    </li>
+                    <li>
+                        <a href="./nosotros.html">Nosotros</a>
+                    </li>
+                    <li>
+                        <button class="btn" id="logoutButton">Cerrar Sesion</button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section class="perfil-section">
+            <div>
+                <h2>Tus peliculas: <span id="user-name"></span></h2>
+                <div id="peliculas-alquiladas">
+                    <div id="peliculas-list"></div>
+            </div>
+        </section>
+    </body>
+</html>
