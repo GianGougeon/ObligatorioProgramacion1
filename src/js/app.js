@@ -1,4 +1,3 @@
-// main.js
 import {
     agregarPeliculaDOM,
     modificarPeliculaDOM,
@@ -7,10 +6,8 @@ import {
     cargarPeliculasDOM,
 } from "./controllers/peliculas.controller.js";
 import { btnNuevaPelicula, btnModificarPelicula, btnEliminarPelicula } from "./controllers/datos.controller.js";
-
-
 import { checkUserProfile } from "./components/checkUserProfile.component.js";
-
+// Cargar el catálogo de películas y los botones de administración
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pelicula-form")?.addEventListener("submit", agregarPeliculaDOM);
     document.getElementById("modificar-form")?.addEventListener("submit", modificarPeliculaDOM);

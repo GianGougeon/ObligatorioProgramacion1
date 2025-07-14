@@ -18,6 +18,7 @@
                 <div class="logo">
                     <img src="./../assets/images/logoheader.png" alt="logo" />
                 </div>
+
                 <ul>
                     <li>
                         <a href="./../../index.html">Inicio</a>
@@ -39,8 +40,15 @@
         <!-- Filtro por género -->
         <section class="bloque-generos">
             <h2 class="titulo-generos">GÉNEROS</h2>
+            <div class="buscador">
+                <form id="form-busqueda" style="margin-top: 10px">
+                    <input type="text" id="buscador" placeholder="Buscar película..." class="buscador" />
+                    <button type="submit" class="btn">Buscar</button>
+                </form>
+            </div>
             <div class="filtroGeneroScroll" id="botones-genero"></div>
         </section>
+
         <!-- Tarjetas de películas -->
         <section class="tarjetas" id="tarjetas">
             <div id="tarjetasPeliculas">

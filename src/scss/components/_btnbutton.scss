@@ -1,16 +1,16 @@
-.btnbutton {
-    border-radius: 2px;
-    border-color: black;
-    padding: 2px;
-    margin-left: 5px;
-}
-
-$border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+$border-gradient: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
 $border-width: 0.125em;
 $curve-size: 0.5em;
 $blur: 30px;
 $bg: #080312;
 $color: #afffff;
+
+.btnbutton {
+    border-radius: 2px;
+    border: 1px solid black;
+    padding: 2px;
+    margin-left: 5px;
+}
 
 .btn {
     color: $color;
@@ -21,22 +21,22 @@ $color: #afffff;
     place-content: center;
     padding: 0.5em 1.5em;
     font-size: 17px;
-    border: 0;
+    border: none;
     text-transform: uppercase;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-    clip-path: polygon(0% $curve-size, $curve-size 0, 100% 0, 100% calc(100% - $curve-size), calc(100% - $curve-size) 100%, 0 100%);
+    clip-path: polygon(0% $curve-size, $curve-size 0, 100% 0, 100% calc(100% - #{$curve-size}), calc(100% - #{$curve-size}) 100%, 0 100%);
     transition: color 250ms;
     text-decoration: none;
 
-    &::after,
-    &::before {
+    &::before,
+    &::after {
         content: "";
         position: absolute;
         inset: 0;
     }
 
     &::before {
-        background: $border-color;
+        background: $border-gradient;
         background-size: 300% 300%;
         animation: move-bg 5s ease infinite;
         z-index: -2;
@@ -45,15 +45,16 @@ $color: #afffff;
     &::after {
         background: $bg;
         z-index: -1;
-        clip-path: polygon($border-width calc($curve-size + $border-width * 0.5), calc($curve-size + $border-width * 0.5) $border-width, calc(100% - $border-width) $border-width, calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width), $border-width calc(100% - $border-width));
+        clip-path: polygon($border-width calc(#{$curve-size} + #{$border-width} * 0.5), calc(#{$curve-size} + #{$border-width} * 0.5) $border-width, calc(100% - #{$border-width}) $border-width, calc(100% - #{$border-width}) calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)), calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)) calc(100% - #{$border-width}), $border-width calc(100% - #{$border-width}));
         transition: clip-path 500ms;
     }
 
     &:hover,
     &:focus {
         color: #fff;
+
         &::after {
-            clip-path: polygon(calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - $border-width) $border-width, calc(100% - $border-width) $border-width, calc(100% - $border-width) calc(100% - calc($curve-size + $border-width * 0.5)), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width), calc(100% - calc($curve-size + $border-width * 0.5)) calc(100% - $border-width));
+            clip-path: polygon(calc(100% - #{$border-width}) calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)), calc(100% - #{$border-width}) $border-width, calc(100% - #{$border-width}) $border-width, calc(100% - #{$border-width}) calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)), calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)) calc(100% - #{$border-width}), calc(100% - calc(#{$curve-size} + #{$border-width} * 0.5)) calc(100% - #{$border-width}));
             transition: 200ms;
         }
     }
@@ -73,6 +74,7 @@ $color: #afffff;
     }
 }
 
+// Scroll estilo moderno
 .filtroGeneroScroll {
     display: flex;
     gap: 10px;
@@ -82,45 +84,24 @@ $color: #afffff;
     max-width: 100%;
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: #00ffff20 #1a1a1a;
-}
+    scrollbar-color: rgb(106 4 140) #1a1a1a;
 
-.filtroGeneroScroll::-webkit-scrollbar {
-    height: 8px;
-}
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
 
-.filtroGeneroScroll::-webkit-scrollbar-track {
-    background: #1a1a1a;
-    border-radius: 10px;
-}
+    &::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 10px;
+    }
 
-.filtroGeneroScroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #00ffff, #00aaff); /* De cian a azul eléctrico */
-    border-radius: 10px;
-    transition: background 0.3s ease;
-}
+    &::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #00ffff, #00aaff);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+    }
 
-.filtroGeneroScroll::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, #00ffff, #0088cc); /* Más fuerte al pasar el mouse */
-}
-
-
-
-.titulo-generos {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    border: none;
-    font: normal 48px / normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
+    &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #00ffff, #0088cc);
+    }
 }

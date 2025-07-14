@@ -1,6 +1,6 @@
-import { isAuthenticated } from '../services/auth.service.js';
 import { UsuarioMemoria } from "../models/usuario.js";
 
+//  Verifica si el usuario está autenticado si se entra desde la url, para no permitir el acceso a la página de administración si no es admin
 const isAuthenticatedComponent = () => {
     const usuarioMemoria = new UsuarioMemoria();
     const admin = usuarioMemoria.leerUsuario();

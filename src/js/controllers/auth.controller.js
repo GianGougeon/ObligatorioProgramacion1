@@ -1,3 +1,4 @@
+// sesion.html
 // controllers/auth.controller.js
 import { login, register, checkUser } from "../services/auth.service.js";
 import { UsuarioMemoria } from "../models/usuario.js";
@@ -10,6 +11,7 @@ const manejarLogin = () => {
     if (!form) return;
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+        // Usamos try-catch para manejar errores
         try {
             const username = document.getElementById("username").value.trim();
             const password = document.getElementById("password").value.trim();
@@ -42,14 +44,14 @@ const manejarLogin = () => {
     });
 };
 
-
+// Funcion para manejar el registro
 const manejarRegistro = () => {
     const form = document.getElementById("registroForm");
     if (!form) {
         console.error("Formulario de registro no encontrado");
         return;
     }
-
+    // Agregar evento de submit al formulario
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const username = document.getElementById("newUsername").value.trim();
@@ -68,7 +70,7 @@ const manejarRegistro = () => {
             document.getElementById("newPassword").value = "";
             return;
         }
-
+        // Intentar registrar al usuario
         if (register(username, password)) {
             alert("Registro exitoso");
             checkUser();
@@ -79,5 +81,5 @@ const manejarRegistro = () => {
         }
     });
 };
-
+//  Exportar las funciones para que puedan ser usadas en otros módulos
 export { manejarLogin, manejarRegistro };

@@ -1,3 +1,4 @@
+// peliculas.html
 // controllers/catalogo.controller.js
 import { Memoria } from "../models/memoria.js";
 import { UsuarioMemoria } from "../models/usuario.js";
@@ -30,7 +31,7 @@ const obtenerFechaActual = () => {
     let hora = `${horas}:${minutos}`;
     return { fecha, hora };
 };
-
+// Imprime las películas en el contenedor de tarjetas
 const imprimirPeliculas = (peliculas) => {
     const tarjetasPeliculas = document.getElementById("tarjetasPeliculas");
     if (!tarjetasPeliculas) return;
@@ -49,7 +50,7 @@ const imprimirPeliculas = (peliculas) => {
             </div>
         `;
     });
-
+    // Agregar eventos a los botones de alquiler
     document.querySelectorAll(".btn").forEach(boton => {
         const id = parseInt(boton.getAttribute("data-id"));
         const pelicula = peliculas.find(p => p.id === id);
@@ -69,7 +70,7 @@ const imprimirPeliculas = (peliculas) => {
     });
 };
 
-
+// Obtiene los géneros únicos de las películas almacenadas
 const obtenerGenerosUnicos = () => {
     const memoria = new Memoria();
     const peliculas = memoria.leer("peliculas") || [];
@@ -87,12 +88,13 @@ const obtenerGenerosUnicos = () => {
     // Convertir a array y agregar "Todos" al principio
     return ["Todos", ...Array.from(generosSet)];
 };
-
+//  Inicia el catálogo de películas y genera los botones de género
 const iniciarCatalogo = () => {
     const contenedorBotones = document.getElementById("botones-genero");
     // Limpiar botones por si se actualiza más adelante
     contenedorBotones.innerHTML = "";
     const generos = obtenerGenerosUnicos(); // esto se actualiza dinámicamente
+    // Crear botón de género
     generos.forEach(genero => {
         const boton = document.createElement("button");
         boton.textContent = genero;
@@ -110,9 +112,41 @@ const iniciarCatalogo = () => {
         e.preventDefault();
     });
     const peliculas = cargarPeliculas();
+    // Imprimir las películas en el contenedor de tarjetas
     imprimirPeliculas(peliculas);
 };
+// Buscador de películas
+const peliculasBuscador = () => {
+    const formBusqueda = document.getElementById("form-busqueda");
+    const inputBuscador = document.getElementById("buscador");
+    const memoria = new Memoria();
+    // Verifica si el formulario y el input existen
+    formBusqueda.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const texto = inputBuscador.value.toLowerCase();
+        const peliculasGuardadas = memoria.leer("peliculas") || [];
+        peliculasGuardadas.forEach(p => console.log("Título:", p.titulo));
+        const filtradas = peliculasGuardadas.filter(pelicula =>
+            pelicula.titulo.toLowerCase().includes(texto)
+        );
+        if (filtradas.length === 0) {
+            const tarjetasPeliculas = document.getElementById("tarjetasPeliculas");
+            tarjetasPeliculas.innerHTML = `<div class = "not" <p >No se encontraron películas.</p></div>`;
+            document.getElementById("buscador").value = "";
+        } else {
+            imprimirPeliculas(filtradas);
+            document.getElementById("buscador").value = ""
+        }
+    });
+};
+// Carga las películas desde memoria y activa el buscador
+const cargarPelisBuscador = () => {
+    const memoria = new Memoria();
+    const peliculasGuardadas = memoria.leer("peliculas") || [];
 
+    imprimirPeliculas(peliculasGuardadas); // Mostrar todas al inicio
+    peliculasBuscador(); // Activar buscador
+}
 
-
-export { iniciarCatalogo };
+// Exporta las funciones para que puedan ser usadas en otros módulos
+export { iniciarCatalogo, cargarPelisBuscador };

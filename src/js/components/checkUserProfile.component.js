@@ -2,16 +2,19 @@
 import { UsuarioMemoria } from "../models/usuario.js";
 
 const usuarioMemoria = new UsuarioMemoria();
-
+// Cambia el texto del botón de perfil según el estado del usuario
 const cambiarTextoPerfil = (text) => {
     const profile = document.getElementById("perfil");
+    if (!profile) {
+        return; // Si no se encuentra el elemento, no hacemos nada
+    }
     const button = profile.querySelector('.btn');
     if (button) {
         button.textContent = text;
     };
 }
 
-
+// Chequea el perfil del usuario y actualiza el texto del botón
 export const checkUserProfile = () => {
     // Cargar el usuario desde memoria
     const usuario = usuarioMemoria.leerUsuario();

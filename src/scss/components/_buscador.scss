@@ -4,17 +4,23 @@
     text-align: center;
     align-items: center;
     padding: 2px;
-   background-color: #201f21;
-
-    > input {
-        width: 150px;
-        padding: 0.3rem;
+    background-color: #201f21;
+    > form {
         display: flex;
-        text-align: center;
+    }
+
+    input {
+        margin: 0 10px;
+        color: aliceblue;
+        border-color: #201f21;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+    > button {
+        height: 30px;
+        display: flex;
         justify-content: center;
-        text-align: center;
         align-items: center;
-         border-radius: 2px;
-        
+        align-items: center;
+        margin: auto;
     }
 }

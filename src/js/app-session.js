@@ -1,4 +1,3 @@
-// app-session.js
 import { manejarLogin, manejarRegistro } from "./controllers/auth.controller.js";
 import { checkUser } from "./services/auth.service.js";
 
@@ -35,7 +34,7 @@ const renderRegistro = () => {
             </div>
             <div>
                 <label for="newPassword">Contraseña:</label>
-                <input type="text" id="newPassword" required />
+                <input type="password" id="newPassword" required />
             </div>
             <button type="submit" class="btn">Registrarse</button>
         </form>

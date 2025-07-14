@@ -1,3 +1,4 @@
+// datos.html
 import {
     getPeliculas,
     agregarPelicula,
@@ -11,6 +12,7 @@ import {
 
 import { peliculas } from "../models/peliculas.js";
 
+// Función para reiniciar el alquiler de una película
 const botonReiniciarAlquilerPelicula = (id) => {
     const peliculas = getPeliculas();
     const pelicula = peliculas.find(p => p.id === id);
@@ -26,6 +28,7 @@ const botonReiniciarAlquilerPelicula = (id) => {
 // Función para listar las películas en el DOM
 const listarPeliculasDOM = () => {
     const lista = document.getElementById("listaPeliculas");
+    if (!lista) return; // Si no existe el contenedor, salimos, para no romper el código y observar errores en consola
     lista.innerHTML = "";
     const peliculas = getPeliculas();
     const table = document.createElement("table");
@@ -87,7 +90,7 @@ const listarPeliculasDOM = () => {
     lista.appendChild(table);
 };
 
-//
+// Agrega una nueva película al DOM y a la memoria
 const agregarPeliculaDOM = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -128,7 +131,7 @@ const agregarPeliculaDOM = (event) => {
         alert("Error al cargar la imagen. Se usará imagen por defecto.");
     });
 };
-
+//  Muestra las estadísticas de las películas alquiladas en el DOM
 const mostrarEstadisticasDOM = (fechaSeleccionada = null) => {
     const cont = document.getElementById("estadisticasPeliculas");
     if (!cont) return;
@@ -143,7 +146,7 @@ const mostrarEstadisticasDOM = (fechaSeleccionada = null) => {
 
     // 2. Filtrar por fecha si hay una seleccionada
     const filtrado = fechaSeleccionada
-        ? total.filter(p => p.fechaAlquiler?.fecha?.startsWith(fechaSeleccionada))
+        ? total.filter(p => p.fechaAlquiler?.fecha?.startsWith(fechaSeleccionada)) // startsWith para comparar solo la fecha
         : total;
 
     // 3. Agrupar por cliente
@@ -222,10 +225,11 @@ const mostrarEstadisticasDOM = (fechaSeleccionada = null) => {
     });
 };
 
-
+// Función para modificar una película en el DOM y en la memoria
 const modificarPeliculaDOM = (event) => {
     event.preventDefault();
     const form = event.target;
+    // Validar que el ID sea un número
     const id = parseInt(form["modificar-id"].value);
     const actualizado = modificarPeliculaPorId(id, {
         titulo: form["modificar-titulo"].value,
@@ -236,14 +240,14 @@ const modificarPeliculaDOM = (event) => {
         clasificacion: form["modificar-clasificacion"].value,
         precio: form["modificar-precio"].value,
     });
-
+    // Si el ID no es un número o no se encontró la película, mostrar un mensaje de error
     if (!actualizado) return alert("ID no encontrado.");
     listarPeliculasDOM();
     mostrarEstadisticasDOM();
     form.reset();
     alert("Película modificada.");
 };
-
+// Función para eliminar una película en el DOM y en la memoria
 const eliminarPeliculaDOM = () => {
     const id = parseInt(document.querySelector("#modificar-id").value);
     if (isNaN(id)) return alert("ID inválido.");
@@ -258,20 +262,20 @@ const eliminarPeliculaDOM = () => {
         alert("Película no encontrada.");
     }
 };
-
+// Función para reiniciar la memoria de películas y actualizar el DOM
 const reiniciarMemoriaDOM = () => {
     reiniciarPeliculas();
     listarPeliculasDOM();
     mostrarEstadisticasDOM();
     alert("Se han reiniciado los alquileres.");
 };
-
+// Función para cargar las películas desde la memoria y mostrarlas en el DOM
 const cargarPeliculasDOM = () => {
     leerPeliculas();
     listarPeliculasDOM();
     mostrarEstadisticasDOM();
 };
-
+// Exportar las funciones para que puedan ser utilizadas en otros módulos
 export {
     agregarPeliculaDOM,
     listarPeliculasDOM,
