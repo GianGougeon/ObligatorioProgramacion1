@@ -7,6 +7,10 @@
         <script type="module" src="./../js/app-perfil.js" defer></script>
         <script type="module" src="./../js/components/isAuthenticated.component.js" defer></script>
         <link rel="stylesheet" href="../css/styles.css" />
+        <!-- Flatpickr CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+        <!-- Flatpickr JS -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <title>Datos</title>
     </head>
     <body>
@@ -33,8 +37,19 @@
             </div>
         </header>
         <!-- Sección de películas -->
+        <section class="btnSeccionData">
+            <div>
+                <button id="btnNuevaPelicula" class="btn">Agregar Nueva Película</button>
+            </div>
+            <div>
+                <button id="btnModificarPelicula" class="btn">Estadísticas</button>
+            </div>
+            <div>
+                <button id="btnEliminarPelicula" class="btn">Modificar Película</button>
+            </div>
+        </section>
         <section id="peliculas-grid">
-            <div id="formulario-pelicula">
+            <div id="formulario-pelicula" style="display: none">
                 <div>
                     <h2>Agregar Nueva Película</h2>
                     <form id="pelicula-form" class="formulario">
@@ -75,12 +90,12 @@
                 </div>
             </div>
             <!-- Estadísticas -->
-            <div id="estadisticas">
-                <h2>Estadísticas</h2>
+            <div id="estadisticas" style="display: none">
+                <div id="calendarioAlquileres"></div>
                 <div id="estadisticasPeliculas"></div>
             </div>
             <!-- Modificar película -->
-            <div id="formulario-modificar">
+            <div id="formulario-modificar" style="display: none">
                 <h2>Modificar Película</h2>
                 <form id="modificar-form" class="formulario">
                     <div class="campo">

@@ -37,7 +37,7 @@ const obtenerUsuarioActual = () => {
 const mostrarPeliculasAlquiladasDOM = () => {
     const contenedor = document.getElementById("peliculas-list");
     const totalPagar = document.getElementById("totalPagar");
-    const usuario = obtenerUsuarioActual(); // <--- tu función o clase para esto
+    const usuario = obtenerUsuarioActual();
 
     if (!usuario) {
         contenedor.innerHTML = "<p class='mensaje-vacio'>Debes iniciar sesión para ver tus alquileres.</p>";
@@ -59,14 +59,12 @@ const mostrarPeliculasAlquiladasDOM = () => {
     const listaPeliculas = alquiladas.map(p => {
         const fecha = p.fechaAlquiler || "Fecha desconocida";
         total += p.precio;
-
         return `
             <li>
                 <strong>${p.titulo}</strong>
-                <span class="fecha-alquiler">(${fecha})</span>
+                <span class="fecha-alquiler">(${fecha.hora} - ${fecha.fecha})</span>
             </li>`;
     }).join("");
-
     contenedor.innerHTML = `
         <table class="tabla-alquiladas">
             <thead>
@@ -92,14 +90,6 @@ const mostrarPeliculasAlquiladasDOM = () => {
 
     totalPagar.textContent = `Total a pagar: $${total}`;
 };
-
-
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     manejarLogout();

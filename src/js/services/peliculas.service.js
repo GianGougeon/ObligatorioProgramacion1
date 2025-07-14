@@ -1,5 +1,7 @@
 import { Memoria } from "../models/memoria.js";
 import { data } from "../data/data.js";
+// peloculas alquiladas
+import { obtenerPeliculasAlquiladas } from "../services/catalogo.service.js";
 
 let peliculasArray = [...data];
 
@@ -73,10 +75,15 @@ const generarId = () => Math.floor(Math.random() * 10000);
 
 const obtenerEstadisticas = () => {
     const alquiladas = peliculasArray.filter(p => p.alquilada);
-    const total = alquiladas.reduce((acc, p) => acc + p.precio, 0);
-    const max = Math.max(...peliculasArray.map(p => p.VecesAlquilada));
-    const populares = peliculasArray.filter(p => p.VecesAlquilada === max && max > 0);
-    return { alquiladas, total, populares };
+    // nombre de cliente
+    const cliente = [...new Set(alquiladas.map(p => p.nombreCliente))];
+    // Total de películas alquiladas
+    const total = obtenerPeliculasAlquiladas()
+    // Películas más populares (más veces alquiladas)
+    const populares = [...alquiladas].sort((a, b) => (b.VecesAlquilada || 0) - (a.VecesAlquilada || 0)).slice(0, 5);
+    // Suma total de ingresos
+    const ingresos = alquiladas.reduce((sum, p) => sum + (p.precio || 0), 0);
+    return { total, populares, ingresos, cliente };
 };
 
 export {

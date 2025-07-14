@@ -356,8 +356,7 @@ header .header-login > li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  border-bottom: 1px solid #222;
+  background-color: #201f21;
 }
 
 .btnbutton {
@@ -450,10 +449,6 @@ header .header-login > li a {
   background: linear-gradient(90deg, #00ffff, #0088cc); /* Más fuerte al pasar el mouse */
 }
 
-.filtroGeneroScroll > button {
-  margin: 0 20px;
-}
-
 .titulo-generos {
   font-size: 24px;
   margin-bottom: 10px;
@@ -471,15 +466,6 @@ header .header-login > li a {
   -o-text-overflow: clip;
   text-overflow: clip;
   white-space: pre;
-  text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255), 0 0 30px rgb(255, 255, 255), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.titulo-generos:hover {
-  text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255), 0 0 30px rgb(255, 255, 255), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
 }
 
 footer {
@@ -648,6 +634,109 @@ footer > div:nth-child(3) > p:hover {
   font-weight: bold;
 }
 
+.btnSeccionData {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f0f2f5;
+}
+.btnSeccionData > div {
+  padding: 2rem;
+}
+
+.estadisticas {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.estadisticas__titulo {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+.estadisticas__resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.estadisticas__resumen .resumen-item {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.estadisticas__resumen .resumen-item strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.estadisticas__resumen .resumen-item span {
+  font-size: 1.2rem;
+  color: #111;
+}
+.estadisticas .clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.estadisticas .cliente-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+.estadisticas .cliente-card:hover {
+  transform: translateY(-2px);
+}
+.estadisticas .cliente-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.estadisticas .cliente-card p {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #444;
+}
+.estadisticas .cliente-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.estadisticas .cliente-card table th,
+.estadisticas .cliente-card table td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+.estadisticas .cliente-card table th {
+  background-color: #f5f5f5;
+}
+.estadisticas .cliente-card table tr:last-child td {
+  border-bottom: none;
+}
+
+.filtros-fechas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.filtros-fechas button {
+  padding: 6px 12px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filtros-fechas button:hover {
+  background-color: #ddd;
+}
+
 .sesion {
   margin: 0;
   height: 100vh;
@@ -776,6 +865,7 @@ footer > div:nth-child(3) > p:hover {
   text-align: center;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  height: 65VH;
 }
 .nosotros-section > div {
   max-width: 1000px;
@@ -822,7 +912,7 @@ footer > div:nth-child(3) > p:hover {
   padding-top: 20px;
   font-family: "Arial", sans-serif;
   font-size: 2.5rem;
-  border-bottom: 2cap solid #444;
+  padding-bottom: 2rem;
 }
 
 .mensaje-vacio {

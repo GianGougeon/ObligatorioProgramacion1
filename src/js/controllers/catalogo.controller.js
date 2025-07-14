@@ -54,11 +54,9 @@ const imprimirPeliculas = (peliculas) => {
         const id = parseInt(boton.getAttribute("data-id"));
         const pelicula = peliculas.find(p => p.id === id);
         if (!pelicula) return;
-
         if (pelicula.alquilada) {
             boton.disabled = true;
         }
-
         boton.addEventListener("click", () => {
             // Agrega la fecha de alquiler
             pelicula.fechaAlquiler = obtenerFechaActual();
